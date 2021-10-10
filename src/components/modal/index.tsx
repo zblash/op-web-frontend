@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React from "react";
+import { Modal, Button } from "react-bootstrap";
 
 interface ModalComponentProps {
   header?: string;
@@ -32,7 +32,7 @@ function ModalComponent(props: React.PropsWithChildren<ModalComponentProps>) {
       <Modal.Body>{props.children}</Modal.Body>
       <Modal.Footer>
         {props.showCloseButton && (
-          <Button variant={props.showAcceptButton ? 'secondary' : 'primary'} onClick={props.onClose}>
+          <Button variant={props.showAcceptButton ? "secondary" : "primary"} onClick={props.onClose}>
             Close
           </Button>
         )}

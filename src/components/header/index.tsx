@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import * as React from 'react';
-import { useAuth } from '@/contexts/auth-context';
-import { Container } from 'react-bootstrap';
+import * as React from "react";
+import { useAuth } from "@/contexts/auth-context";
+import { Container } from "react-bootstrap";
 import {
   UILink,
   UIUserIcon,
@@ -14,11 +14,11 @@ import {
   UINotificationHornIcon,
   UINotificationIcon,
   UIDownChevronIcon,
-} from '@/components/ui';
-import { useWindowSize } from '@/utils/ui/use-window-size';
-import { HeaderMenu } from '../header-menu/desktop';
-import { MobileHeaderMenu } from '../header-menu/mobile';
-import { TabletHeaderMenu } from '../header-menu/tablet';
+} from "@/components/ui";
+import { useWindowSize } from "../../utils/ui/use-window-size";
+import { HeaderMenu } from "../header-menu/desktop";
+import { MobileHeaderMenu } from "../header-menu/mobile";
+import { TabletHeaderMenu } from "../header-menu/tablet";
 /*
   Header Helpers
 */
@@ -28,7 +28,7 @@ interface HeaderProps {}
   Header Styles
 */
 
-const _Header: React.SFC<HeaderProps> = props => {
+const _Header: React.SFC<HeaderProps> = (props) => {
   const { isAuthenticated, userDetails, logout } = useAuth();
   const { width } = useWindowSize();
 

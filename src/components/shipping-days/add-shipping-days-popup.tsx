@@ -1,8 +1,8 @@
-import React from 'react';
-import { ModalComponent } from '@/components/page-components/modal';
-import { DaysOfWeek, IAddressStateResponse } from '@/utils/api/api-models';
-import { UISelect } from '@/components/ui';
-import { shippingDays } from './utils';
+import React from "react";
+import { ModalComponent } from "../modal";
+import { DaysOfWeek, IAddressStateResponse } from "../../utils/api/api-models";
+import { UISelect } from "../select";
+import { shippingDays } from "./utils";
 
 interface AddShippingDaysPopupComponentProps {
   isOpened: boolean;
@@ -23,7 +23,7 @@ function AddShippingDaysPopupComponent(props: React.PropsWithChildren<AddShippin
   const onAccept = React.useCallback(() => {
     props.onSubmit(
       selectedState.value,
-      selectedDays.map(day => day.value),
+      selectedDays.map((day) => day.value),
     );
   }, [props, selectedDays, selectedState]);
   /* AddShippingDaysPopupComponent Lifecycle  */
@@ -41,7 +41,7 @@ function AddShippingDaysPopupComponent(props: React.PropsWithChildren<AddShippin
           labelKey="Bolge Secin"
           placeholderKey="Sevkiyat Gunleri"
           onChange={(e: { value: string; label: string }) => setSelectedState(e)}
-          options={props.states.map(state => ({
+          options={props.states.map((state) => ({
             value: state.id,
             label: `${state.cityTitle}-${state.title}`,
           }))}

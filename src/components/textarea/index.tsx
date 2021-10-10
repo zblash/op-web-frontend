@@ -1,4 +1,4 @@
-import React, { TextareaHTMLAttributes } from 'react';
+import React, { TextareaHTMLAttributes } from "react";
 
 export interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
@@ -11,7 +11,7 @@ export interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 }
 
 const UITextArea = React.forwardRef<HTMLTextAreaElement, Props>(
-  ({ className = 'block', labelKey, labelClassName, name, errorKey, placeholderKey, inputClassName, ...rest }, ref) => {
+  ({ className = "block", labelKey, labelClassName, name, errorKey, placeholderKey, inputClassName, ...rest }, ref) => {
     return (
       <div className={`form-group ${className}`}>
         {labelKey && (
@@ -27,7 +27,7 @@ const UITextArea = React.forwardRef<HTMLTextAreaElement, Props>(
           className={`form-control ${inputClassName}`}
           autoComplete="off"
           spellCheck="false"
-          aria-invalid={errorKey ? 'true' : 'false'}
+          aria-invalid={errorKey ? "true" : "false"}
           {...rest}
         />
         {errorKey && (

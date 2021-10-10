@@ -1,13 +1,9 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import styled, { colors } from "@/styled";
-import { UILink } from "@/components/link/index";
-import {
-  CreditPaymentType,
-  IOrder,
-  TOrderStatus,
-} from "@/utils/api/api-models";
-import { UITableComponent } from "@/components/ui/table";
+import styled, { colors } from "../../styled";
+import { UILink } from "../link";
+import { CreditPaymentType, IOrder, TOrderStatus } from "../../utils/api/api-models";
+import { UITableComponent } from "../table";
 import { Button } from "react-bootstrap";
 import { OrderListFilterComponent } from "./filter";
 import { UpdateOrderPopupComponent } from "./update-order-popup";
@@ -24,12 +20,7 @@ interface OrderListComponentProps {
   handlePdfBtnClick: (e: IOrder) => void;
   status?: TOrderStatus;
   onPageChange?: (pageNumber: number) => void;
-  onOrderUpdated: (
-    id: string,
-    paidPrice?: number,
-    paymentType?: CreditPaymentType,
-    waybillDate?: string
-  ) => void;
+  onOrderUpdated: (id: string, paidPrice?: number, paymentType?: CreditPaymentType, waybillDate?: string) => void;
 }
 
 /* OrderListComponent Constants */
@@ -51,15 +42,10 @@ const StyledLink = styled(UILink)`
   color: ${colors.primaryDark};
 `;
 /* OrderListComponent Component  */
-function OrderListComponent(
-  props: React.PropsWithChildren<OrderListComponentProps>
-) {
+function OrderListComponent(props: React.PropsWithChildren<OrderListComponentProps>) {
   /* OrderListComponent Variables */
   const { t } = useTranslation();
-  const [
-    selectedItemForUpdate,
-    setSelectedItemForUpdate,
-  ] = React.useState<IOrder>();
+  const [selectedItemForUpdate, setSelectedItemForUpdate] = React.useState<IOrder>();
   const [isPopupOpened, setIsPopupOpened] = React.useState<boolean>(false);
   /* OrderListComponent Callbacks */
 
@@ -119,8 +105,7 @@ function OrderListComponent(
             accessor: "operations",
             customRenderer: (item: IOrder) => (
               <StyledActionsWrapper>
-                {(item.status === "CONFIRMED" ||
-                  item.status === "PREPARED") && (
+                {(item.status === "CONFIRMED" || item.status === "PREPARED") && (
                   <Button
                     onClick={() => {
                       setSelectedItemForUpdate(item);
@@ -130,15 +115,8 @@ function OrderListComponent(
                     Teslimat
                   </Button>
                 )}
-                <StyledLink to={`/order/${item.id}`}>
-                  {" "}
-                  {t("common.details")}
-                </StyledLink>
-                {item.status === "FINISHED" && (
-                  <Button onClick={(x) => props.handlePdfBtnClick(item)}>
-                    Yazdir
-                  </Button>
-                )}
+                <StyledLink to={`/order/${item.id}`}> {t("common.details")}</StyledLink>
+                {item.status === "FINISHED" && <Button onClick={(x) => props.handlePdfBtnClick(item)}>Yazdir</Button>}
               </StyledActionsWrapper>
             ),
           },
@@ -158,12 +136,7 @@ function OrderListComponent(
         onShowingChanged={(e: boolean) => {
           setIsPopupOpened(e);
         }}
-        onSubmit={(
-          id: string,
-          paidPrice?: number,
-          paymentType?: CreditPaymentType,
-          waybillDate?: string
-        ) => {
+        onSubmit={(id: string, paidPrice?: number, paymentType?: CreditPaymentType, waybillDate?: string) => {
           setIsPopupOpened(false);
           props.onOrderUpdated(id, paidPrice, paymentType, waybillDate);
         }}

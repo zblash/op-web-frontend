@@ -1,12 +1,8 @@
 import React from "react";
 import { Row, Col, Button } from "react-bootstrap";
-import {
-  IAddressStateResponse,
-  IShippingDaysResponse,
-  DaysOfWeek,
-} from "@/utils/api/api-models";
-import { UITableComponent } from "@/components/ui/table";
-import { UIEditIcon } from "@/components/ui";
+import { IAddressStateResponse, IShippingDaysResponse, DaysOfWeek } from "../../utils/api/api-models";
+import { UITableComponent } from "../table";
+import { UIEditIcon } from "../icons";
 import { AddShippingDaysPopupComponent } from "./add-shipping-days-popup";
 import { EditShippingDaysPopupComponent } from "./edit-shipping-days-popup";
 
@@ -18,24 +14,13 @@ interface ShippingDaysComponentProps {
 }
 
 /* ShippingDaysComponent Component  */
-function ShippingDaysComponent(
-  props: React.PropsWithChildren<ShippingDaysComponentProps>
-) {
+function ShippingDaysComponent(props: React.PropsWithChildren<ShippingDaysComponentProps>) {
   /* ShippingDaysComponent Variables */
-  const [isAddModalShowing, setIsAddModalShowing] = React.useState<boolean>(
-    false
-  );
-  const [isEditModalShowing, setIsEditModalShowing] = React.useState<boolean>(
-    false
-  );
+  const [isAddModalShowing, setIsAddModalShowing] = React.useState<boolean>(false);
+  const [isEditModalShowing, setIsEditModalShowing] = React.useState<boolean>(false);
   const [selectedShippingId, setSelectedShippingId] = React.useState<string>();
-  const [
-    selectedShippingName,
-    setSelectedShippingName,
-  ] = React.useState<string>();
-  const [selectedShippingDays, setSelectedShippingDays] = React.useState<
-    DaysOfWeek[]
-  >();
+  const [selectedShippingName, setSelectedShippingName] = React.useState<string>();
+  const [selectedShippingDays, setSelectedShippingDays] = React.useState<DaysOfWeek[]>();
   /* ShippingDaysComponent Callbacks */
 
   /* ShippingDaysComponent Lifecycle  */
@@ -43,14 +28,7 @@ function ShippingDaysComponent(
   return (
     <>
       <Row>
-        <Col
-          lg={12}
-          md={12}
-          sm={12}
-          xl={12}
-          xs={12}
-          className="d-flex justify-content-between mb-2"
-        >
+        <Col lg={12} md={12} sm={12} xl={12} xs={12} className="d-flex justify-content-between mb-2">
           <h3 className="font-size-19-bold">Teslimat Gunleriniz</h3>
           <Button
             variant="secondary"
@@ -77,9 +55,7 @@ function ShippingDaysComponent(
               {
                 Header: "Teslimat Gunleri",
                 accessor: "cancelledOrderCount",
-                customRenderer: (item: IShippingDaysResponse) => (
-                  <span>{item.days.map((day) => day).join("-")}</span>
-                ),
+                customRenderer: (item: IShippingDaysResponse) => <span>{item.days.map((day) => day).join("-")}</span>,
               },
               {
                 Header: "Islem",
@@ -90,9 +66,7 @@ function ShippingDaysComponent(
                     variant="link"
                     onClick={() => {
                       setSelectedShippingId(item.id);
-                      setSelectedShippingName(
-                        `${item.cityName} - ${item.stateName}`
-                      );
+                      setSelectedShippingName(`${item.cityName} - ${item.stateName}`);
                       setSelectedShippingDays(item.days);
                       setIsEditModalShowing(true);
                     }}

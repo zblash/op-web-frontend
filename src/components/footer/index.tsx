@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { UILink } from '@/components/ui';
+import * as React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import { UILink } from "../link";
 
 interface FooterProps {}
 

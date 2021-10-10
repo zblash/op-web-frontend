@@ -1,9 +1,9 @@
-import * as React from 'react';
-import DatePicker from 'react-datepicker';
-import styled, { colors, css } from '@/styled';
-import { TOrderStatus } from '@/services/helpers/backend-models';
-import { Button, Row, Col } from 'react-bootstrap';
-import { UISelect, UIInput } from '@/components/ui';
+import * as React from "react";
+import DatePicker from "react-datepicker";
+import styled, { colors, css } from "../../styled";
+import { TOrderStatus } from "@/services/helpers/backend-models";
+import { Button, Row, Col } from "react-bootstrap";
+import { UISelect, UIInput } from "@/components/ui";
 
 /* OrderListFilterComponent Helpers */
 interface OrderListFilterComponentProps {
@@ -32,18 +32,18 @@ function OrderListFilterComponent(props: React.PropsWithChildren<OrderListFilter
   /* OrderListFilterComponent Variables */
   const statusList = React.useMemo<{ value: TOrderStatus; label: string }[]>(() => {
     return [
-      { value: 'FINISHED', label: 'Teslim Edildi' },
-      { value: 'PREPARED', label: 'Hazirlaniyor' },
-      { value: 'NEW', label: 'Yeni' },
-      { value: 'CONFIRMED', label: 'Onaylanan' },
-      { value: 'CANCELLED', label: 'Iptal' },
-      { value: 'CANCEL_REQUEST', label: 'Iptal Isteginde' },
+      { value: "FINISHED", label: "Teslim Edildi" },
+      { value: "PREPARED", label: "Hazirlaniyor" },
+      { value: "NEW", label: "Yeni" },
+      { value: "CONFIRMED", label: "Onaylanan" },
+      { value: "CANCELLED", label: "Iptal" },
+      { value: "CANCEL_REQUEST", label: "Iptal Isteginde" },
     ];
   }, []);
-  const [customer, setCustomer] = React.useState<string>('');
+  const [customer, setCustomer] = React.useState<string>("");
   const [lastDate, setLastDate] = React.useState<Date>();
   const [selectedStatus, setSelectedStatus] = React.useState<{ value: TOrderStatus; label: string }>(
-    statusList.find(opt => opt.value === props.status),
+    statusList.find((opt) => opt.value === props.status),
   );
   /* OrderListFilterComponent Callbacks */
   const handleFilterNameChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,7 +88,7 @@ function OrderListFilterComponent(props: React.PropsWithChildren<OrderListFilter
         <DatePicker
           selected={lastDate}
           maxDate={new Date()}
-          onChange={selectedDate => setLastDate(selectedDate)}
+          onChange={(selectedDate) => setLastDate(selectedDate)}
           locale="tr"
           dateFormat="yyyy-MM-dd"
           className={DatePickerBtn}

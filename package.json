@@ -1,16 +1,12 @@
 {
-  "name": "op-web-fronted",
-  "version": "1.0.0",
-  "private": true,
+  "name": "@onlineplasiyer/op-web-fronted",
+  "version": "1.0.1",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "scripts": {
     "build": "rollup -c",
     "build-watch": "rollup -c -w",
     "prepublishOnly": "npm run build",
-    "postinstall": "install-peers -f && cd example && npm i",
-    "start-example": "cd example && npm start",
-    "deploy-example": "cd example && npm run deploy",
     "dev": "concurrently --kill-others \"npm run build-watch\" \"npm run start-example\"",
     "test": "npm run test:lint && npm run test:unit",
     "pretest": "npm run build",
@@ -75,5 +71,14 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onlinePlasiyer/op-web-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/onlinePlasiyer/op-web-frontend/issues"
+  },
+  "homepage": "https://github.com/onlinePlasiyer/op-web-frontend#readme",
+  "description": ""
 }

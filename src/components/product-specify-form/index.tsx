@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { UICheckbox, UIInput, UISelect, UIContainer } from '@/components/ui';
+import * as React from "react";
+import { UICheckbox } from "../checkbox";
+import { UIInput } from "../input";
+import { UISelect } from "../select";
+import { UIContainer } from "../container";
 
 import {
   ICustomerTypeResponse,
@@ -7,9 +10,9 @@ import {
   ISpecifyProductResponse,
   IAddressStateResponse,
   IProductResponse,
-} from '@/utils/api/api-models';
-import { Row, Col, Button } from 'react-bootstrap';
-import { useForm, Controller } from 'react-hook-form';
+} from "../../utils/api/api-models";
+import { Row, Col, Button } from "react-bootstrap";
+import { useForm, Controller } from "react-hook-form";
 
 /* ProductSpecifyCreateUpdateComponent Helpers */
 interface ProductSpecifyCreateUpdateComponentProps {
@@ -37,9 +40,9 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
   } = useForm();
 
   const unitTypeOptions = [
-    { value: 'AD', label: 'AD' },
-    { value: 'KG', label: 'KG' },
-    { value: 'KL', label: 'KL' },
+    { value: "AD", label: "AD" },
+    { value: "KG", label: "KG" },
+    { value: "KL", label: "KL" },
   ];
   const [discount, setDiscount] = React.useState(props.data ? props.data.discount : false);
 
@@ -51,7 +54,7 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
         contents: s.contents,
         quantity: s.quantity,
         recommendedRetailPrice: s.recommendedRetailPrice,
-        stateIds: s.selectedStateIds.map(st => st.value),
+        stateIds: s.selectedStateIds.map((st) => st.value),
         totalPrice: s.totalPrice,
         unitPrice: s.unitPrice,
         unitType: s.unitType.value,
@@ -66,12 +69,12 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
   );
 
   const setTotalPrice = React.useCallback(() => {
-    if (getValues('unitType') && getValues('unitPrice')) {
-      let price = getValues('unitPrice');
-      if ((getValues('unitType').value === 'KG' || getValues('unitType').value === 'KL') && getValues('contents')) {
-        price = parseFloat((getValues('contents') * getValues('unitPrice')).toFixed(2));
+    if (getValues("unitType") && getValues("unitPrice")) {
+      let price = getValues("unitPrice");
+      if ((getValues("unitType").value === "KG" || getValues("unitType").value === "KL") && getValues("contents")) {
+        price = parseFloat((getValues("contents") * getValues("unitPrice")).toFixed(2));
       }
-      setValue('totalPrice', price);
+      setValue("totalPrice", price);
     }
   }, [getValues, setValue]);
   /* CreateProductSpecifyPage Lifecycle  */
@@ -91,14 +94,14 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
               <Controller
                 control={control}
                 name="unitType"
-                defaultValue={unitTypeOptions.find(unitType => unitType.value === props.data?.unitType)}
+                defaultValue={unitTypeOptions.find((unitType) => unitType.value === props.data?.unitType)}
                 render={({ field: { onChange, value, ref } }) => (
                   <UISelect
                     options={unitTypeOptions}
                     placeholderKey="Secim Yapin"
                     labelKey="Satis Birimi"
                     value={value}
-                    onChange={e => {
+                    onChange={(e) => {
                       onChange(e);
                       setTotalPrice();
                     }}
@@ -112,12 +115,12 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
                 step="any"
                 variant="solid"
                 defaultValue={props.data?.contents}
-                {...register('contents', {
-                  required: 'Bu Alan Zorunludur.',
+                {...register("contents", {
+                  required: "Bu Alan Zorunludur.",
                   min: 0.1,
                 })}
-                onChange={e => {
-                  setValue('contents', e.target.value);
+                onChange={(e) => {
+                  setValue("contents", e.target.value);
                   setTotalPrice();
                 }}
                 errorKey={errors.contents?.message}
@@ -130,12 +133,12 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
                     step="any"
                     variant="solid"
                     defaultValue={props.data?.unitPrice}
-                    {...register('unitPrice', {
-                      required: 'Bu Alan Zorunludur.',
+                    {...register("unitPrice", {
+                      required: "Bu Alan Zorunludur.",
                       min: 0.1,
                     })}
-                    onChange={e => {
-                      setValue('unitPrice', e.target.value);
+                    onChange={(e) => {
+                      setValue("unitPrice", e.target.value);
                       setTotalPrice();
                     }}
                     errorKey={errors.unitPrice?.message}
@@ -149,8 +152,8 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
                     step="any"
                     variant="solid"
                     defaultValue={props.data?.totalPrice}
-                    {...register('totalPrice', {
-                      required: 'Bu Alan Zorunludur.',
+                    {...register("totalPrice", {
+                      required: "Bu Alan Zorunludur.",
                       min: 0.1,
                     })}
                     errorKey={errors.totalPrice?.message}
@@ -165,8 +168,8 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
                     step="any"
                     variant="solid"
                     defaultValue={props.data?.quantity}
-                    {...register('quantity', {
-                      required: 'Bu Alan Zorunludur.',
+                    {...register("quantity", {
+                      required: "Bu Alan Zorunludur.",
                       min: 0.1,
                     })}
                     errorKey={errors.quantity?.message}
@@ -180,8 +183,8 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
                     step="any"
                     variant="solid"
                     defaultValue={props.data?.recommendedRetailPrice}
-                    {...register('recommendedRetailPrice', {
-                      required: 'Bu Alan Zorunludur.',
+                    {...register("recommendedRetailPrice", {
+                      required: "Bu Alan Zorunludur.",
                       min: 0.1,
                     })}
                     errorKey={errors.recommendedRetailPrice?.message}
@@ -190,14 +193,14 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
               </Row>
               <Controller
                 control={control}
-                defaultValue={props.data?.states?.map(x => ({
+                defaultValue={props.data?.states?.map((x) => ({
                   value: x.id,
                   label: `${x.cityTitle} - ${x.title}`,
                 }))}
                 name="selectedStateIds"
                 render={({ field: { onChange, value, ref } }) => (
                   <UISelect
-                    options={props.activeStates.map(x => ({
+                    options={props.activeStates.map((x) => ({
                       value: x.id,
                       label: `${x.cityTitle} - ${x.title}`,
                     }))}
@@ -215,13 +218,13 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
               <Controller
                 control={control}
                 name="customerTypes"
-                defaultValue={props.data?.customerTypeList?.map(x => ({
+                defaultValue={props.data?.customerTypeList?.map((x) => ({
                   value: x.id,
                   label: x.typeName,
                 }))}
                 render={({ field: { onChange, value, ref } }) => (
                   <UISelect
-                    options={props.customerTypes.map(x => ({
+                    options={props.customerTypes.map((x) => ({
                       value: x.id,
                       label: x.typeName,
                     }))}
@@ -246,7 +249,7 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
                         value={discount}
                         label="Promosyon/Indirim Uygulanacak mi?"
                         id="product-discount"
-                        onChange={isChecked => {
+                        onChange={(isChecked) => {
                           setDiscount(isChecked);
                           onChange(isChecked);
                         }}
@@ -262,8 +265,8 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
                     type="text"
                     variant="solid"
                     defaultValue={props.data?.promotion?.promotionText}
-                    {...register('promotionText', {
-                      required: 'Bu Alan Zorunludur.',
+                    {...register("promotionText", {
+                      required: "Bu Alan Zorunludur.",
                     })}
                     errorKey={errors.promotionText?.message}
                   />
@@ -272,8 +275,8 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
                     type="number"
                     variant="solid"
                     defaultValue={props.data?.promotion?.discountUnit}
-                    {...register('discountUnit', {
-                      required: 'Bu Alan Zorunludur.',
+                    {...register("discountUnit", {
+                      required: "Bu Alan Zorunludur.",
                       min: 0.1,
                     })}
                     errorKey={errors.discountUnit?.message}
@@ -284,8 +287,8 @@ function ProductSpecifyFormComponent(props: React.PropsWithChildren<ProductSpeci
                     step="any"
                     variant="solid"
                     defaultValue={props.data?.promotion?.discountValue}
-                    {...register('discountValue', {
-                      required: 'Bu Alan Zorunludur.',
+                    {...register("discountValue", {
+                      required: "Bu Alan Zorunludur.",
                       min: 0.1,
                       max: 100,
                     })}

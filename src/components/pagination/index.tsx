@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button } from 'react-bootstrap';
+import React from "react";
+import { Button } from "react-bootstrap";
 
 interface PaginationProps {
   totalPages?: number;
@@ -76,7 +76,7 @@ const Pagination: React.FC<PaginationProps> = ({
             <span>...</span>
           </>
         )}
-        {pager.pageRange.map(pCount => (
+        {pager.pageRange.map((pCount) => (
           <Button
             key={`pagination-c-${pCount}`}
             type="button"

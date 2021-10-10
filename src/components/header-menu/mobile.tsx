@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import * as React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import Logo from '@/assets/images/logo/flogo.png';
-import { useAuth } from '@/contexts/auth-context';
+import * as React from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import Logo from "@/assets/images/logo/flogo.png";
+import { useAuth } from "@/contexts/auth-context";
 import {
   UILink,
   UICloseIcon,
@@ -22,8 +22,8 @@ import {
   UIDotIcon,
   UIInboxes,
   UIPackageIcon,
-} from '@/components/ui';
-import { useWindowSize } from '@/utils/ui/use-window-size';
+} from "@/components/ui";
+import { useWindowSize } from "../../utils/ui/use-window-size";
 /* MobileHeaderMenu Helpers */
 
 /* MobileHeaderMenu Constants */
@@ -44,7 +44,7 @@ function MobileHeaderMenu() {
     <>
       {width < 768 && (
         <>
-          <Container fluid className={`mobile__header ${isOpened ? 'd-none' : 'd-block'}`}>
+          <Container fluid className={`mobile__header ${isOpened ? "d-none" : "d-block"}`}>
             <Row className="align-items-center d-flex">
               <Col
                 sm={6}
@@ -81,7 +81,7 @@ function MobileHeaderMenu() {
               </Col>
             </Row>
           </Container>
-          <Container fluid className={`position-absolute mobile__header__menu ${isOpened ? 'd-block' : 'd-none'}`}>
+          <Container fluid className={`position-absolute mobile__header__menu ${isOpened ? "d-block" : "d-none"}`}>
             <Row className="top">
               <Col className="d-flex justify-content-end align-items-center">
                 <UICloseIcon

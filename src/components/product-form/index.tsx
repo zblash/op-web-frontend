@@ -1,8 +1,16 @@
-import * as React from 'react';
-import { UIInput, UISelect, UICameraIcon, UIContainer } from '@/components/ui';
-import { ICategoryResponse, ICustomerTypeResponse, IProductResponse, IProductRequest } from '@/utils/api/api-models';
-import { Row, Col, Button } from 'react-bootstrap';
-import { useForm, Controller } from 'react-hook-form';
+import * as React from "react";
+import { UIInput } from "../input";
+import { UISelect } from "../select";
+import { UIContainer } from "../container";
+import { UICameraIcon } from "../icons";
+import {
+  ICategoryResponse,
+  ICustomerTypeResponse,
+  IProductResponse,
+  IProductRequest,
+} from "../../utils/api/api-models";
+import { Row, Col, Button } from "react-bootstrap";
+import { useForm, Controller } from "react-hook-form";
 
 /* CreateProductComponent Helpers */
 interface CreateProductComponentProps {
@@ -48,10 +56,10 @@ function ProductFormComponent(props: React.PropsWithChildren<CreateProductCompon
 
   const taxOptions = React.useMemo(
     () => [
-      { value: 0, label: '0%' },
-      { value: 1, label: '1%' },
-      { value: 8, label: '8%' },
-      { value: 18, label: '18%' },
+      { value: 0, label: "0%" },
+      { value: 1, label: "1%" },
+      { value: 8, label: "8%" },
+      { value: 18, label: "18%" },
     ],
     [],
   );
@@ -102,17 +110,17 @@ function ProductFormComponent(props: React.PropsWithChildren<CreateProductCompon
                     inputClassName="border"
                     variant="solid"
                     value={props.barcode}
-                    {...registerBarcode('barcode', {
+                    {...registerBarcode("barcode", {
                       required: true,
                       maxLength: 13,
                       minLength: 13,
                     })}
                     errorKey={
                       errorBarcode.barcode
-                        ? errorBarcode.barcode.type === 'required'
-                          ? 'Bu Alan zorunludur!'
-                          : 'Bu alan 13 karakter olmalidir!'
-                        : ''
+                        ? errorBarcode.barcode.type === "required"
+                          ? "Bu Alan zorunludur!"
+                          : "Bu alan 13 karakter olmalidir!"
+                        : ""
                     }
                   />
                 </Col>
@@ -129,8 +137,8 @@ function ProductFormComponent(props: React.PropsWithChildren<CreateProductCompon
                 inputClassName="border"
                 variant="solid"
                 value={props.product?.name}
-                {...registerProduct('productName', {
-                  required: 'Bu Alan Zorunludur.',
+                {...registerProduct("productName", {
+                  required: "Bu Alan Zorunludur.",
                 })}
                 errorKey={errorProduct.productName?.message}
               />
@@ -154,11 +162,11 @@ function ProductFormComponent(props: React.PropsWithChildren<CreateProductCompon
               <Controller
                 control={control}
                 name="mainCategory"
-                defaultValue={{ value: '', label: '' }}
+                defaultValue={{ value: "", label: "" }}
                 render={({ field: { onChange, value, ref } }) => (
                   <UISelect
                     labelClassName="font-weight-bold"
-                    options={props.parentCategories?.map(category => {
+                    options={props.parentCategories?.map((category) => {
                       return { value: category.id, label: category.name };
                     })}
                     placeholderKey="Secim Yapin"
@@ -180,13 +188,13 @@ function ProductFormComponent(props: React.PropsWithChildren<CreateProductCompon
                 render={({ field: { onChange, value, ref } }) => (
                   <UISelect
                     labelClassName="font-weight-bold"
-                    options={props.subCategories?.map(category => {
+                    options={props.subCategories?.map((category) => {
                       return { value: category.id, label: category.name };
                     })}
                     placeholderKey="Secim Yapin"
                     labelKey="Alt Kategori"
                     value={value}
-                    onChange={e => {
+                    onChange={(e) => {
                       onChange(e);
                     }}
                     isDisabled={isReadOnly || !props.subCategories}
@@ -200,7 +208,7 @@ function ProductFormComponent(props: React.PropsWithChildren<CreateProductCompon
                 render={({ field: { onChange, value, ref } }) => (
                   <UISelect
                     labelClassName="font-weight-bold"
-                    options={props.customerTypes?.map(customerType => {
+                    options={props.customerTypes?.map((customerType) => {
                       return { value: customerType.id, label: customerType.typeName };
                     })}
                     placeholderKey="Secim Yapin"
@@ -208,7 +216,7 @@ function ProductFormComponent(props: React.PropsWithChildren<CreateProductCompon
                     value={value}
                     inputClassName="border"
                     isMulti
-                    onChange={e => {
+                    onChange={(e) => {
                       onChange(e);
                     }}
                     isDisabled={isReadOnly || !props.customerTypes}
@@ -225,11 +233,11 @@ function ProductFormComponent(props: React.PropsWithChildren<CreateProductCompon
                   id="product-image"
                   name="product-image"
                   type="file"
-                  onChange={event => {
+                  onChange={(event) => {
                     if (event.target.files && event.target.files[0]) {
                       const file = event.target.files[0];
                       const reader = new FileReader();
-                      reader.onload = e => {
+                      reader.onload = (e) => {
                         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
                         // @ts-ignore
                         setImgSrc(e.target.result as string);

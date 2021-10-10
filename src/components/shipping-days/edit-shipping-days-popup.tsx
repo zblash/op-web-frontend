@@ -1,8 +1,8 @@
-import React from 'react';
-import { ModalComponent } from '@/components/page-components/modal';
-import { DaysOfWeek } from '@/utils/api/api-models';
-import { UISelect } from '@/components/ui';
-import { shippingDays } from './utils';
+import React from "react";
+import { ModalComponent } from "../modal";
+import { DaysOfWeek } from "../../utils/api/api-models";
+import { UISelect } from "../select";
+import { shippingDays } from "./utils";
 
 interface EditShippingDaysPopupComponentProps {
   id: string;
@@ -21,7 +21,7 @@ function EditShippingDaysPopupComponent(props: React.PropsWithChildren<EditShipp
   const onAccept = React.useCallback(() => {
     props.onSubmit(
       props.id,
-      selectedDays.map(day => day.value),
+      selectedDays.map((day) => day.value),
     );
   }, [props, selectedDays]);
   /* EditShippingDaysPopupComponent Lifecycle  */
@@ -29,7 +29,7 @@ function EditShippingDaysPopupComponent(props: React.PropsWithChildren<EditShipp
   React.useEffect(() => {
     if (props.shippingDays)
       setSelectedDays(
-        props.shippingDays.map(day => {
+        props.shippingDays.map((day) => {
           return {
             value: day,
             label: day.toString(),

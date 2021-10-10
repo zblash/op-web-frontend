@@ -1,8 +1,9 @@
-import React from 'react';
-import DatePicker from 'react-datepicker';
-import { ModalComponent } from '@/components/page-components/modal';
-import { UIInput, UISelect } from '@/components/ui';
-import { CreditPaymentType } from '@/utils/api/api-models';
+import React from "react";
+import DatePicker from "react-datepicker";
+import { ModalComponent } from "../modal";
+import { UIInput } from "../input";
+import { UISelect } from "../select";
+import { CreditPaymentType } from "../../utils/api/api-models";
 
 interface UpdateOrderPopupComponentProps {
   orderId: string;
@@ -19,8 +20,8 @@ function UpdateOrderPopupComponent(props: React.PropsWithChildren<UpdateOrderPop
   const [paidPrice, setPaidPrice] = React.useState<number>();
   const paymentTypes = React.useMemo(() => {
     const array: Array<{ value: CreditPaymentType; label: string }> = [
-      { value: 'CASH', label: 'Nakit' },
-      { value: 'CREDIT_CARD', label: 'Kredi Karti' },
+      { value: "CASH", label: "Nakit" },
+      { value: "CREDIT_CARD", label: "Kredi Karti" },
     ];
 
     return array;
@@ -32,7 +33,7 @@ function UpdateOrderPopupComponent(props: React.PropsWithChildren<UpdateOrderPop
       paidPrice,
       paymentType?.value,
       `${date.getDate()}-${
-        date.getMonth() + 1 > 9 ? date.getMonth() + 1 : '0'.concat((date.getMonth() + 1).toString())
+        date.getMonth() + 1 > 9 ? date.getMonth() + 1 : "0".concat((date.getMonth() + 1).toString())
       }-${date.getFullYear()}`,
     );
     setDate(new Date());
@@ -59,19 +60,19 @@ function UpdateOrderPopupComponent(props: React.PropsWithChildren<UpdateOrderPop
           type="number"
           step="0.01"
           value={paidPrice}
-          onChange={e => setPaidPrice(parseInt(e.target.value, 10))}
+          onChange={(e) => setPaidPrice(parseInt(e.target.value, 10))}
         />
         <label>Teslim Tarihi: </label>
         <DatePicker
           selected={date}
-          onChange={selectedDate => setDate(selectedDate)}
+          onChange={(selectedDate) => setDate(selectedDate)}
           locale="tr"
           dateFormat="dd-MM-yyyy"
         />
 
         <UISelect
           isClearable
-          onChange={e => setPaymentType(e as { value: CreditPaymentType; label: string })}
+          onChange={(e) => setPaymentType(e as { value: CreditPaymentType; label: string })}
           value={paymentType}
           options={paymentTypes}
           placeholderKey="Odeme Yontemi"

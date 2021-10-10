@@ -1,17 +1,15 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
-import { IOrderSummary } from "@/utils/api/api-models";
-import { UILink } from "@/components/ui";
-import { UITableComponent } from "@/components/ui/table";
+import { IOrderSummary } from "../../utils/api/api-models";
+import { UILink } from "../link";
+import { UITableComponent } from "../table";
 
 interface OrdersSummaryComponentProps {
   orderSummary: IOrderSummary;
 }
 
 /* OrdersSummaryComponent Component  */
-function OrdersSummaryComponent(
-  props: React.PropsWithChildren<OrdersSummaryComponentProps>
-) {
+function OrdersSummaryComponent(props: React.PropsWithChildren<OrdersSummaryComponentProps>) {
   /* OrdersSummaryComponent Variables */
 
   /* OrdersSummaryComponent Callbacks */
@@ -19,14 +17,7 @@ function OrdersSummaryComponent(
   /* OrdersSummaryComponent Lifecycle  */
   return (
     <Row>
-      <Col
-        lg={12}
-        md={12}
-        sm={12}
-        xl={12}
-        xs={12}
-        className="mb-2 d-flex justify-content-between align-items-center"
-      >
+      <Col lg={12} md={12} sm={12} xl={12} xs={12} className="mb-2 d-flex justify-content-between align-items-center">
         <h3 className="font-size-19-bold">Siparis Ozeti</h3>
         <UILink className="text-underline" to="/orders">
           Detaylari Gor
@@ -39,11 +30,7 @@ function OrdersSummaryComponent(
               Header: "Yeni Siparis",
               accessor: "newCount",
               customRenderer: (item: IOrderSummary) => (
-                <UILink
-                  className="font-weight-bold"
-                  to="/orders"
-                  state={{ status: "NEW" }}
-                >
+                <UILink className="font-weight-bold" to="/orders" state={{ status: "NEW" }}>
                   {item.newCount}
                 </UILink>
               ),
@@ -52,11 +39,7 @@ function OrdersSummaryComponent(
               Header: "Tamamlanan Siparis",
               accessor: "finishedCount",
               customRenderer: (item: IOrderSummary) => (
-                <UILink
-                  className="font-weight-bold"
-                  to="/orders"
-                  state={{ status: "FINISHED" }}
-                >
+                <UILink className="font-weight-bold" to="/orders" state={{ status: "FINISHED" }}>
                   {item.finishedCount}
                 </UILink>
               ),
@@ -65,11 +48,7 @@ function OrdersSummaryComponent(
               Header: "Iptal Olan Siparis",
               accessor: "cancelledCount",
               customRenderer: (item: IOrderSummary) => (
-                <UILink
-                  className="font-weight-bold"
-                  to="/orders"
-                  state={{ status: "CANCELLED" }}
-                >
+                <UILink className="font-weight-bold" to="/orders" state={{ status: "CANCELLED" }}>
                   {item.cancelledCount}
                 </UILink>
               ),
@@ -78,11 +57,7 @@ function OrdersSummaryComponent(
               Header: "Iptal Istekleri",
               accessor: "cancelRequestCount",
               customRenderer: (item: IOrderSummary) => (
-                <UILink
-                  className="font-weight-bold"
-                  to="/orders"
-                  state={{ status: "CANCEL_REQUEST" }}
-                >
+                <UILink className="font-weight-bold" to="/orders" state={{ status: "CANCEL_REQUEST" }}>
                   {item.cancelRequestCount}
                 </UILink>
               ),
@@ -91,11 +66,7 @@ function OrdersSummaryComponent(
               Header: "Onaylanan Siparis",
               accessor: "submittedCount",
               customRenderer: (item: IOrderSummary) => (
-                <UILink
-                  className="font-weight-bold"
-                  to="/orders"
-                  state={{ status: "CONFIRMED" }}
-                >
+                <UILink className="font-weight-bold" to="/orders" state={{ status: "CONFIRMED" }}>
                   {item.submittedCount}
                 </UILink>
               ),

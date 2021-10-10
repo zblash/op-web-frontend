@@ -15,15 +15,9 @@ export {
 
 export { BsInboxes as UIInboxes, BsDot as UIDotIcon } from "react-icons/bs";
 
-export {
-  RiNotification2Fill as UINotificationIcon,
-  RiCloseFill as UICloseIcon,
-} from "react-icons/ri";
+export { RiNotification2Fill as UINotificationIcon, RiCloseFill as UICloseIcon } from "react-icons/ri";
 
-export {
-  BiChevronDownCircle as UIDownChevronIcon,
-  BiNetworkChart as UINetworkIcon,
-} from "react-icons/bi";
+export { BiChevronDownCircle as UIDownChevronIcon, BiNetworkChart as UINetworkIcon } from "react-icons/bi";
 
 export { GoPackage as UIPackageIcon } from "react-icons/go";
 

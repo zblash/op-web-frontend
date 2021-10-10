@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IAnnouncement } from "@/utils/api/api-models";
+import { IAnnouncement } from "../../utils/api/api-models";
 import { Row, Col } from "react-bootstrap";
 
 const Slider = React.lazy(() => import("react-slick"));

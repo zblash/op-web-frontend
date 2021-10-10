@@ -1,12 +1,10 @@
 import * as React from "react";
 import { useTranslation } from "react-i18next";
-import styled from "@/styled";
-import { UILink, UIEditIcon, UITrashIcon } from "@/components/ui";
-import {
-  IPaginationWrapper,
-  ISpecifyProductResponse,
-} from "@/utils/api/api-models";
-import { UITableComponent } from "@/components/ui/table";
+import styled from "../../styled";
+import { UILink } from "../link";
+import { UIEditIcon, UITrashIcon } from "../icons";
+import { IPaginationWrapper, ISpecifyProductResponse } from "../../utils/api/api-models";
+import { UITableComponent } from "../table";
 import { DeleteProductSpecifyPopupComponent } from "./delete-product-specify-popup";
 
 /* ProductSpecifyListComponent Helpers */
@@ -29,16 +27,12 @@ const StyledActionsWrapper = styled.div`
 `;
 
 /* ProductSpecifyListComponent Component  */
-function ProductSpecifyListComponent(
-  props: React.PropsWithChildren<ProductSpecifyListComponentProps>
-) {
+function ProductSpecifyListComponent(props: React.PropsWithChildren<ProductSpecifyListComponentProps>) {
   /* ProductSpecifyListComponent Variables */
   const { t } = useTranslation();
   const [isDeletePopupShowing, setDeletePopupShowing] = React.useState(false);
-  const [
-    selectedProductSpecifyForDelete,
-    setSelectedProductSpecifyForDelete,
-  ] = React.useState<ISpecifyProductResponse>();
+  const [selectedProductSpecifyForDelete, setSelectedProductSpecifyForDelete] =
+    React.useState<ISpecifyProductResponse>();
   /* ProductSpecifyListComponent Callbacks */
 
   /* ProductSpecifyListComponent Lifecycle  */
@@ -52,12 +46,8 @@ function ProductSpecifyListComponent(
             accessor: "barcode",
             sort: true,
             sortName: "id",
-            sortType:
-              props.sortObject && props.sortObject.sortName === "id"
-                ? props.sortObject.sortType
-                : "desc",
-            customRenderer: (item: ISpecifyProductResponse) =>
-              item.productBarcodeList[0],
+            sortType: props.sortObject && props.sortObject.sortName === "id" ? props.sortObject.sortType : "desc",
+            customRenderer: (item: ISpecifyProductResponse) => item.productBarcodeList[0],
           },
           {
             Header: t("common.product-name"),
