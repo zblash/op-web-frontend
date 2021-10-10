@@ -1,18 +1,12 @@
-import * as React from 'react';
-import styled from '@/styled/index';
-import { IAnnouncement } from '@/services/helpers/backend-models';
-import { Row, Col } from 'react-bootstrap';
+import * as React from "react";
+import { IAnnouncement } from "@/utils/api/api-models";
+import { Row, Col } from "react-bootstrap";
 
-const Slider = React.lazy(() => import('react-slick'));
+const Slider = React.lazy(() => import("react-slick"));
 /* AnnouncementComponent Helpers */
 interface AnnouncementComponentProps {
   announcements?: IAnnouncement[];
 }
-
-const SliderImg = styled.img`
-  height: 600px;
-  width: 100%;
-`;
 
 /* AnnouncementComponent Component  */
 function AnnouncementComponent(props: React.PropsWithChildren<AnnouncementComponentProps>) {
@@ -42,11 +36,11 @@ function AnnouncementComponent(props: React.PropsWithChildren<AnnouncementCompon
         <Col lg={12} md={12} sm={12} xl={12} xs={12}>
           <Slider {...settings}>
             {props.announcements &&
-              props.announcements.map(item => (
+              props.announcements.map((item) => (
                 <div key={item.id}>
                   <h3>{item.title}</h3>
                   <p>{item.message}</p>
-                  <SliderImg src={item.fileUrl} />
+                  <img alt={item.title} style={{ height: "600px", width: "100%" }} src={item.fileUrl} />
                 </div>
               ))}
           </Slider>
