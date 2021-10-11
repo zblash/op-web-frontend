@@ -14,62 +14,62 @@ const desktopBreakpoint = 961;
 const desktopWideBreakpoint = 1271;
 
 // Targeting the given screen size or bigger
-const mediaBreakpointUp = (device: 'tablet' | 'desktop' | 'desktop-wide') => {
+const mediaBreakpointUp = (device: "tablet" | "desktop" | "desktop-wide") => {
   switch (device) {
-    case 'tablet':
+    case "tablet":
       return mediaQueryMixins.minWidth(`${tabletBreakpoint}px`);
-    case 'desktop':
+    case "desktop":
       return mediaQueryMixins.minWidth(`${desktopBreakpoint}px`);
-    case 'desktop-wide':
+    case "desktop-wide":
       return mediaQueryMixins.minWidth(`${desktopWideBreakpoint}px`);
     default:
-      return '';
+      return "";
   }
 };
 
 // Targeting the given screen size or smaller
-const mediaBreakpointDown = (device: 'mobile' | 'tablet' | 'desktop') => {
+const mediaBreakpointDown = (device: "mobile" | "tablet" | "desktop") => {
   switch (device) {
-    case 'mobile':
+    case "mobile":
       return mediaQueryMixins.maxWidth(`${tabletBreakpoint - 1}px`);
-    case 'tablet':
+    case "tablet":
       return mediaQueryMixins.maxWidth(`${desktopBreakpoint - 1}px`);
-    case 'desktop':
+    case "desktop":
       return mediaQueryMixins.maxWidth(`${desktopWideBreakpoint - 1}px`);
     default:
-      return '';
+      return "";
   }
 };
 
 // Targeting a single segment of screen sizes
-const mediaBreakpointOnly = (device: 'tablet' | 'desktop') => {
+const mediaBreakpointOnly = (device: "tablet" | "desktop") => {
   switch (device) {
-    case 'tablet':
+    case "tablet":
       return mediaQueryMixins.between(`${tabletBreakpoint}px`, `${desktopBreakpoint - 1}px`);
-    case 'desktop':
+    case "desktop":
       return mediaQueryMixins.between(`${desktopBreakpoint}px`, `${desktopWideBreakpoint - 1}px`);
     default:
-      return '';
+      return "";
   }
 };
 
-const mediaBreakpointBetween = (device1: 'tablet', device2: 'desktop-wide') => {
+const mediaBreakpointBetween = (device1: "tablet", device2: "desktop-wide") => {
   let breakpoint1;
   let breakpoint2;
 
   switch (device1) {
-    case 'tablet':
+    case "tablet":
       breakpoint1 = tabletBreakpoint;
       break;
     default:
-      return '';
+      return "";
   }
   switch (device2) {
-    case 'desktop-wide':
+    case "desktop-wide":
       breakpoint2 = desktopWideBreakpoint;
       break;
     default:
-      return '';
+      return "";
   }
 
   return mediaQueryMixins.between(`${breakpoint1}px`, `${breakpoint2 - 1}px`);

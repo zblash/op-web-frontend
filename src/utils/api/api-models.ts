@@ -414,20 +414,20 @@ export interface ICustomerTypeResponse {
   typeName: string;
 }
 
-export type UserRoleResponse = 'ADMIN' | 'MERCHANT' | 'CUSTOMER';
+export type UserRoleResponse = "ADMIN" | "MERCHANT" | "CUSTOMER";
 
-export type UnitTypeResponse = 'KG' | 'KL' | 'AD';
+export type UnitTypeResponse = "KG" | "KL" | "AD";
 
-export type TOrderStatus = 'NEW' | 'FINISHED' | 'CONFIRMED' | 'CANCELLED' | 'CANCEL_REQUEST' | 'PREPARED';
+export type TOrderStatus = "NEW" | "FINISHED" | "CONFIRMED" | "CANCELLED" | "CANCEL_REQUEST" | "PREPARED";
 
-export type TPaymentOption = 'SYSTEM_CREDIT' | 'MERCHANT_CREDIT' | 'COD';
+export type TPaymentOption = "SYSTEM_CREDIT" | "MERCHANT_CREDIT" | "COD";
 
-export type CreditActivityType = 'DEBT' | 'CREDIT';
+export type CreditActivityType = "DEBT" | "CREDIT";
 
-export type CreditType = 'SYSTEM_CREDIT' | 'MERCHANT_CREDIT';
+export type CreditType = "SYSTEM_CREDIT" | "MERCHANT_CREDIT";
 
-export type ActivityType = 'SYSTEM_CREDIT' | 'MERCHANT_CREDIT' | 'ORDER' | 'ORDER_CANCEL';
+export type ActivityType = "SYSTEM_CREDIT" | "MERCHANT_CREDIT" | "ORDER" | "ORDER_CANCEL";
 
-export type CreditPaymentType = 'CASH' | 'CREDIT_CARD' | 'RUNNING_ACCOUNT';
+export type CreditPaymentType = "CASH" | "CREDIT_CARD" | "RUNNING_ACCOUNT";
 
-export type DaysOfWeek = 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';
+export type DaysOfWeek = "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";

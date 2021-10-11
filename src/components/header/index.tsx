@@ -2,8 +2,8 @@
 import * as React from "react";
 import { useAuth } from "@/contexts/auth-context";
 import { Container } from "react-bootstrap";
+import { UILink } from "../link";
 import {
-  UILink,
   UIUserIcon,
   UIMapIcon,
   UIFacebookIcon,
@@ -14,7 +14,7 @@ import {
   UINotificationHornIcon,
   UINotificationIcon,
   UIDownChevronIcon,
-} from "@/components/ui";
+} from "../icons";
 import { useWindowSize } from "../../utils/ui/use-window-size";
 import { HeaderMenu } from "../header-menu/desktop";
 import { MobileHeaderMenu } from "../header-menu/mobile";

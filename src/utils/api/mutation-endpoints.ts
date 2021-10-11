@@ -17,18 +17,15 @@ import {
   IProductRequest,
   IRegisterResponse,
   IRegisterRequest,
-} from './api-models';
-import { ApiCallService, ApiCall } from './ApiCall';
+} from "./api-models";
+import { ApiCallService, ApiCall } from "./ApiCall";
 
 class MutationEndpoints {
   login: (s: { username: string; password: string }) => Promise<ILoginResponse> = ({ username, password }) => {
     ApiCallService.unRegisterAuthToken();
 
     return ApiCallService.request(
-      new (ApiCall as any)()
-        .setUrl('/merchant/login', false)
-        .setData({ username, password })
-        .post(),
+      new (ApiCall as any)().setUrl("/merchant/login", false).setData({ username, password }).post(),
     );
   };
 
@@ -46,7 +43,7 @@ class MutationEndpoints {
   }) => {
     return ApiCallService.request(
       new (ApiCall as any)()
-        .setUrl('/merchant/register', false)
+        .setUrl("/merchant/register", false)
         .setData({
           cityId,
           stateId,
@@ -65,16 +62,11 @@ class MutationEndpoints {
 
   createProduct = (params: IProductRequest) => {
     const formData = new FormData();
-    Object.keys(params).forEach(key => {
+    Object.keys(params).forEach((key) => {
       formData.append(key, params[key]);
     });
 
-    return ApiCallService.request(
-      new (ApiCall as any)()
-        .setUrl('/products')
-        .setData(formData)
-        .post(),
-    );
+    return ApiCallService.request(new (ApiCall as any)().setUrl("/products").setData(formData).post());
   };
 
   hasProduct = (barcode: string) => {
@@ -84,7 +76,7 @@ class MutationEndpoints {
   createSpecifyProductForAuthUser = (params: ISpecifyProductRequest) =>
     ApiCallService.request(
       new (ApiCall as any)()
-        .setUrl('/products/specify')
+        .setUrl("/products/specify")
         .setData({ ...params, stateList: params.stateIds, stateIds: undefined })
         .post(),
     );
@@ -99,12 +91,7 @@ class MutationEndpoints {
   };
 
   addActiveStates: (s: { stateIds: string[] }) => Promise<IAddressStateResponse[]> = ({ stateIds }) => {
-    return ApiCallService.request(
-      new (ApiCall as any)()
-        .setUrl('/user/activestates')
-        .setData(stateIds)
-        .post(),
-    );
+    return ApiCallService.request(new (ApiCall as any)().setUrl("/user/activestates").setData(stateIds).post());
   };
 
   updateInfos: (params: {
@@ -119,7 +106,7 @@ class MutationEndpoints {
   }) => Promise<IUserCommonResponse> = (...params) => {
     return ApiCallService.request(
       new (ApiCall as any)()
-        .setUrl('/user/info')
+        .setUrl("/user/info")
         .setData(...params)
         .put(),
     );
@@ -128,7 +115,7 @@ class MutationEndpoints {
   updatePassword: (params: { password: string; passwordConfirmation: string }) => Promise<any> = (...params) =>
     ApiCallService.request(
       new (ApiCall as any)()
-        .setUrl('/user/changePassword')
+        .setUrl("/user/changePassword")
         .setData(...params)
         .post(),
     );
@@ -154,12 +141,7 @@ class MutationEndpoints {
   };
 
   addBarcode: (params: { id: string; barcode: string }) => Promise<IProductResponse> = ({ id, barcode }) =>
-    ApiCallService.request(
-      new (ApiCall as any)()
-        .setUrl(`/products/addbarcode/${id}`)
-        .setData({ barcode })
-        .post(),
-    );
+    ApiCallService.request(new (ApiCall as any)().setUrl(`/products/addbarcode/${id}`).setData({ barcode }).post());
 
   editUserCredit: (params: {
     creditId: string;
@@ -182,33 +164,23 @@ class MutationEndpoints {
   }) =>
     ApiCallService.request(
       new (ApiCall as any)()
-        .setUrl('/tickets')
+        .setUrl("/tickets")
         .setData({ ...params })
         .post(),
     );
 
   createTicketReply: (params: { id: string; message: string }) => Promise<ITicketReplyResponse> = ({ id, message }) =>
-    ApiCallService.request(
-      new (ApiCall as any)()
-        .setUrl(`/tickets/${id}/createreply`)
-        .setData({ message })
-        .post(),
-    );
+    ApiCallService.request(new (ApiCall as any)().setUrl(`/tickets/${id}/createreply`).setData({ message }).post());
 
   orderConfirm: (params: { id: string; items: IOrderConfirmItem[] }) => Promise<IOrder> = ({ id, items }) =>
-    ApiCallService.request(
-      new (ApiCall as any)()
-        .setUrl(`/orders/confirm/${id}`)
-        .setData({ items })
-        .post(),
-    );
+    ApiCallService.request(new (ApiCall as any)().setUrl(`/orders/confirm/${id}`).setData({ items }).post());
 
   createShippingDays: (params: { stateId: string; days: DaysOfWeek[] }) => Promise<IShippingDaysResponse> = ({
     ...params
   }) =>
     ApiCallService.request(
       new (ApiCall as any)()
-        .setUrl('/shippingDays')
+        .setUrl("/shippingDays")
         .setData({ ...params })
         .post(),
     );
@@ -217,12 +189,7 @@ class MutationEndpoints {
     shippingDaysId,
     days,
   }) =>
-    ApiCallService.request(
-      new (ApiCall as any)()
-        .setUrl(`/shippingDays/${shippingDaysId}`)
-        .setData({ days })
-        .put(),
-    );
+    ApiCallService.request(new (ApiCall as any)().setUrl(`/shippingDays/${shippingDaysId}`).setData({ days }).put());
 }
 
 const mutationEndPoints = new MutationEndpoints();
