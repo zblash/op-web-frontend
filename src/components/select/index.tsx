@@ -1,6 +1,6 @@
 import React from "react";
 import Select, { components } from "react-select";
-import { AiFillDownCircle } from "react-icons/ai";
+import { UIFillDownIcon } from "../icons";
 
 export interface UISelectProps {
   className?: string;
@@ -22,7 +22,7 @@ export interface UISelectProps {
 const DropdownIndicator = (props) => {
   return (
     <components.DropdownIndicator {...props}>
-      <AiFillDownCircle color="#74b126" />
+      <UIFillDownIcon color="#74b126" />
     </components.DropdownIndicator>
   );
 };

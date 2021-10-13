@@ -2,9 +2,7 @@ import * as React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { UILink } from "../link";
 
-interface FooterProps {}
-
-function Footer(props: React.PropsWithChildren<FooterProps>) {
+function Footer() {
   return (
     <Container fluid>
       <Row className="footer">

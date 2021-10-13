@@ -1,6 +1,6 @@
-import React from "react";
-import { toast, TypeOptions } from "react-toastify";
-import { useWindowSize } from "./ui/use-window-size";
+import React from 'react';
+import { toast, TypeOptions } from 'react-toastify';
+import { useWindowSize } from './ui/use-window-size';
 
 function useStateFromProp<T>(initialValue: T): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [value, setValue] = React.useState(initialValue);
@@ -62,9 +62,9 @@ function useObjectState<T>(initialState: T): [T, UseObjectStateSetStateAction<T>
   const [state, setState] = React.useState(initialState);
   const setMergedState = React.useCallback((newState, isCompletely) => {
     if (isCompletely) {
-      setState((prevState) => newState);
+      setState(() => newState);
     } else {
-      setState((prevState) => ({ ...prevState, ...newState }));
+      setState(prevState => ({ ...prevState, ...newState }));
     }
   }, []);
 
@@ -72,7 +72,7 @@ function useObjectState<T>(initialState: T): [T, UseObjectStateSetStateAction<T>
 }
 function useArrayState<T>(initialState: T[]): [T[], React.Dispatch<React.SetStateAction<Partial<T>>>] {
   const [state, setState] = React.useState(initialState);
-  const setMergedState = React.useCallback((newState) => setState((prevState) => [...prevState, ...newState]), []);
+  const setMergedState = React.useCallback(newState => setState(prevState => [...prevState, ...newState]), []);
 
   return [state, setMergedState];
 }
@@ -82,8 +82,8 @@ function useAlert() {
   const show = (message: string, { type }: { type: TypeOptions }) => {
     toast(message, {
       type,
-      progressClassName: "fancy-progress-bar",
-      position: width > 768 ? "bottom-right" : "top-right",
+      progressClassName: 'fancy-progress-bar',
+      position: width > 768 ? 'bottom-right' : 'top-right',
       autoClose: 4000,
       hideProgressBar: false,
       closeOnClick: true,

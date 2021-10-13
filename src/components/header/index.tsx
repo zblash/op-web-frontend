@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import * as React from "react";
-import { useAuth } from "@/contexts/auth-context";
 import { Container } from "react-bootstrap";
 import { UILink } from "../link";
 import {
@@ -19,44 +18,48 @@ import { useWindowSize } from "../../utils/ui/use-window-size";
 import { HeaderMenu } from "../header-menu/desktop";
 import { MobileHeaderMenu } from "../header-menu/mobile";
 import { TabletHeaderMenu } from "../header-menu/tablet";
+import { IUserInfoResponse } from "../../utils/api/api-models";
 /*
   Header Helpers
 */
-interface HeaderProps {}
+interface HeaderProps {
+  isAuthenticated: boolean;
+  userDetails: IUserInfoResponse | undefined;
+  logout: () => void;
+}
 
 /*
   Header Styles
 */
 
 const _Header: React.SFC<HeaderProps> = (props) => {
-  const { isAuthenticated, userDetails, logout } = useAuth();
   const { width } = useWindowSize();
 
   return (
     <>
-      <MobileHeaderMenu />
+      <MobileHeaderMenu isAuthenticated={props.isAuthenticated} logout={props.logout} />
 
       <Container fluid className="header__top">
         {width > 1180 && (
           <div className="header__top__left">
-            {isAuthenticated && userDetails && (
+            {props.isAuthenticated && props.userDetails && (
               <>
                 <ul>
                   <li>
-                    <UIUserIcon color="#8CBC43" /> Sn: {userDetails.name}
+                    <UIUserIcon color="#8CBC43" /> Sn: {props.userDetails.name}
                     <div className="user_box">
                       <ul>
                         <li>
                           <UILink to="/profile">Profili Gör</UILink>
                         </li>
-                        <li onClick={() => logout()}>
+                        <li onClick={() => props.logout()}>
                           Çıkış Yap <UISignOutIcon />
                         </li>
                       </ul>
                     </div>
                   </li>
                   <li>
-                    <UIMapIcon color="#8CBC43" /> Şube: {userDetails.address.stateName}
+                    <UIMapIcon color="#8CBC43" /> Şube: {props.userDetails.address.stateName}
                   </li>
                   <li>
                     <UINotificationIcon color="#8CBC43" /> Bildirimler
@@ -152,8 +155,8 @@ const _Header: React.SFC<HeaderProps> = (props) => {
           </div>
         </div>
       </Container>
-      {isAuthenticated && <HeaderMenu />}
-      {isAuthenticated && <TabletHeaderMenu />}
+      {props.isAuthenticated && <HeaderMenu />}
+      {props.isAuthenticated && <TabletHeaderMenu isAuthenticated={props.isAuthenticated} logout={props.logout} />}
     </>
   );
 };

@@ -17,15 +17,15 @@ export default class Portal extends React.Component<ModalProps> {
     }
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     modalRoot.appendChild(this.el);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     modalRoot.removeChild(this.el);
   }
 
-  render() {
+  render(): React.ReactElement<ModalProps> {
     const { children } = this.props;
 
     return ReactDOM.createPortal(children, this.el);

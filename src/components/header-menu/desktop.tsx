@@ -2,7 +2,7 @@ import * as React from "react";
 import { UIOutlineDownIcon } from "../icons";
 import { UILink } from "../link";
 import { Container, Row, Col } from "react-bootstrap";
-import Logo from "@/assets/images/logo/flogo.png";
+import Logo from "../images/logo/flogo.png";
 /* HeaderMenu Helpers */
 
 /* HeaderMenu Constants */

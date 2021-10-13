@@ -2,10 +2,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import * as React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Logo from "@/assets/images/logo/flogo.png";
-import { useAuth } from "@/contexts/auth-context";
+import Logo from "../images/logo/flogo.png";
 import {
-  UILink,
   UILogoutSecondIcon,
   UIOutlineDownIcon,
   UIUserIcon,
@@ -14,18 +12,21 @@ import {
   UIInstagramIcon,
   UILinkedInIcon,
   UINotificationIcon,
-} from "@/components/ui";
+} from "../icons";
+import { UILink } from "../link";
 import { useWindowSize } from "../../utils/ui/use-window-size";
 /* MobileHeaderMenu Helpers */
-
+interface TabletHeaderMenuProps {
+  isAuthenticated: boolean;
+  logout: () => void;
+}
 /* MobileHeaderMenu Constants */
 
 /* MobileHeaderMenu Styles */
 
 /* MobileHeaderMenu Component  */
-function TabletHeaderMenu() {
+const TabletHeaderMenu: React.SFC<TabletHeaderMenuProps> = (props) => {
   /* MobileHeaderMenu Variables */
-  const { isAuthenticated, logout } = useAuth();
   const { width } = useWindowSize();
   const [isOpened, setIsOpened] = React.useState(false);
   /* MobileHeaderMenu Callbacks */
@@ -53,7 +54,7 @@ function TabletHeaderMenu() {
                 <img src={Logo} alt="OnlinePlasiyer" />
               </Col>
               <Col sm={4} md={4} xs={4} className="header__right d-flex justify-content-end align-items-center">
-                {isAuthenticated && (
+                {props.isAuthenticated && (
                   <>
                     <UILink to="/profile">
                       <UIUserIcon size={16} />
@@ -62,7 +63,7 @@ function TabletHeaderMenu() {
                     <UILogoutSecondIcon
                       size={16}
                       onClick={() => {
-                        logout();
+                        props.logout();
                       }}
                     />
                   </>
@@ -171,7 +172,7 @@ function TabletHeaderMenu() {
       )}
     </>
   );
-}
+};
 const PureTabletHeaderMenu = React.memo(TabletHeaderMenu);
 
 export { PureTabletHeaderMenu as TabletHeaderMenu };

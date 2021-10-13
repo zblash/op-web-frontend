@@ -5,7 +5,6 @@ import { Loading } from "./loading";
 /*
   DefaultLoading Helpers
 */
-interface DefaultLoadingProps {}
 
 /*
   DefaultLoading Colors // TODO : move theme.json
@@ -25,7 +24,7 @@ const StyledDefaultLoadingWrapper = styled.div`
   align-items: center;
 `;
 
-const DefaultLoading: React.SFC<DefaultLoadingProps> = () => (
+const DefaultLoading: React.FC = () => (
   <StyledDefaultLoadingWrapper>
     <Loading size={70} color={colors.primary} />
   </StyledDefaultLoadingWrapper>

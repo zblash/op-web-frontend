@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "../../styled";
 import { useStateFromProp } from "../../utils/hooks";
-import { RiCloseFill } from "react-icons/ri";
+import { UICloseIcon } from "../icons";
 import { Portal } from "../portal";
 
 interface PopupProps {
@@ -65,7 +65,7 @@ const _Popup: React.SFC<PopupProps> = (props) => {
             e.stopPropagation();
           }}
         >
-          {shouldShowCloseIcon && <RiCloseFill size={12} onClick={closePopup} />}
+          {shouldShowCloseIcon && <UICloseIcon size={12} onClick={closePopup} />}
           {children}
         </StyledPopup>
       </StyledPopupOverlay>

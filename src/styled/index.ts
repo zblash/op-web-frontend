@@ -1,11 +1,11 @@
 /* eslint-disable import/no-duplicates,@typescript-eslint/no-explicit-any */
-import * as React from "react";
+import * as React from 'react';
 
-import _styled, { createGlobalStyle, Keyframes } from "styled-components";
+import _styled, { createGlobalStyle, Keyframes } from 'styled-components';
 
-import { mixins } from "./mixins";
-import { css, globalStyle } from "./css";
-import { colors, setTheme } from "./theme";
+import { mixins } from './mixins';
+import { css, globalStyle } from './css';
+import { colors, setTheme } from './theme';
 
 export interface StylableProps {
   className?: string;

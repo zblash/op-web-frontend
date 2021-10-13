@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import * as React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Logo from "@/assets/images/logo/flogo.png";
-import { useAuth } from "@/contexts/auth-context";
+import * as React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import Logo from '../images/logo/flogo.png';
 import {
-  UILink,
   UICloseIcon,
   UIHOmeIcon,
   UICreditCardIcon,
@@ -22,18 +20,21 @@ import {
   UIDotIcon,
   UIInboxes,
   UIPackageIcon,
-} from "@/components/ui";
-import { useWindowSize } from "../../utils/ui/use-window-size";
+} from '../icons';
+import { UILink } from '../link';
+import { useWindowSize } from '../../utils/ui/use-window-size';
 /* MobileHeaderMenu Helpers */
-
+interface MobileHeaderMenuProps {
+  isAuthenticated: boolean;
+  logout: () => void;
+}
 /* MobileHeaderMenu Constants */
 
 /* MobileHeaderMenu Styles */
 
 /* MobileHeaderMenu Component  */
-function MobileHeaderMenu() {
+const MobileHeaderMenu: React.SFC<MobileHeaderMenuProps> = props => {
   /* MobileHeaderMenu Variables */
-  const { isAuthenticated, logout } = useAuth();
   const { width } = useWindowSize();
   const [isOpened, setIsOpened] = React.useState(false);
   /* MobileHeaderMenu Callbacks */
@@ -44,7 +45,7 @@ function MobileHeaderMenu() {
     <>
       {width < 768 && (
         <>
-          <Container fluid className={`mobile__header ${isOpened ? "d-none" : "d-block"}`}>
+          <Container fluid className={`mobile__header ${isOpened ? 'd-none' : 'd-block'}`}>
             <Row className="align-items-center d-flex">
               <Col
                 sm={6}
@@ -55,7 +56,7 @@ function MobileHeaderMenu() {
                 <img src={Logo} alt="OnlinePlasiyer" />
               </Col>
               <Col sm={6} md={6} xs={6} className="mobile__header__right d-flex justify-content-end align-items-center">
-                {isAuthenticated && (
+                {props.isAuthenticated && (
                   <>
                     <div
                       onClick={() => {
@@ -73,7 +74,7 @@ function MobileHeaderMenu() {
                     <UILogoutSecondIcon
                       size={16}
                       onClick={() => {
-                        logout();
+                        props.logout();
                       }}
                     />
                   </>
@@ -81,7 +82,7 @@ function MobileHeaderMenu() {
               </Col>
             </Row>
           </Container>
-          <Container fluid className={`position-absolute mobile__header__menu ${isOpened ? "d-block" : "d-none"}`}>
+          <Container fluid className={`position-absolute mobile__header__menu ${isOpened ? 'd-block' : 'd-none'}`}>
             <Row className="top">
               <Col className="d-flex justify-content-end align-items-center">
                 <UICloseIcon
@@ -223,7 +224,7 @@ function MobileHeaderMenu() {
       )}
     </>
   );
-}
+};
 const PureMobileHeaderMenu = React.memo(MobileHeaderMenu);
 
 export { PureMobileHeaderMenu as MobileHeaderMenu };

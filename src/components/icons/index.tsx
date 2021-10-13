@@ -29,3 +29,6 @@ export {
   AiOutlineSetting as UISettingsIcon,
   AiOutlineDown as UIOutlineDownIcon,
 } from "react-icons/ai";
+
+export { EyeOff } from "./eye-off-icon";
+export { Eye } from "./eye-icon";
