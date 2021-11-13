@@ -1,21 +1,21 @@
-import React from "react";
-import { useTable } from "react-table";
-import { Table } from "react-bootstrap";
-import { TableColumnSortComponent } from "./sort";
-import { Pagination } from "../pagination";
+import React from 'react';
+import { useTable } from 'react-table';
+import { Table } from 'react-bootstrap';
+import { TableColumnSortComponent } from './sort';
+import { Pagination } from '../pagination';
 
 interface UITableColumnProps<T> {
   Header: string;
   accessor: string;
   sortName?: string;
   sort?: boolean;
-  sortType?: "asc" | "desc";
+  sortType?: 'asc' | 'desc';
   customRenderer?: (item: T) => React.ReactElement | string | number;
 }
 
 function useTableRowNormalizator<T>(items: UITableColumnProps<T>[]) {
-  return items.map((item) => {
-    if (item.customRenderer && typeof item.customRenderer === "function") {
+  return items.map(item => {
+    if (item.customRenderer && typeof item.customRenderer === 'function') {
       const Cell = (i: any) => {
         return item.customRenderer(i.row.original);
       };
@@ -51,7 +51,7 @@ function UITableComponent<T>(props: UITableProps<T>) {
     <div>
       <Table striped hover responsive {...getTableProps()}>
         <thead>
-          {headerGroups.map((headerGroup) => (
+          {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column, index) => (
                 <th className="text-center align-middle" {...column.getHeaderProps()}>
@@ -59,27 +59,27 @@ function UITableComponent<T>(props: UITableProps<T>) {
                     <TableColumnSortComponent
                       item={column.sortName || props.columns[index].accessor}
                       title={column.Header}
-                      sortType={column.sortType || "desc"}
+                      sortType={column.sortType || 'desc'}
                       onSortChange={(item, sortType) => {
                         props.onSortChange(item);
                         props.onSortTypeChange(sortType);
                       }}
                     />
                   )}
-                  {!column.sort && <span className="font-weight-normal">{column.render("Header")}</span>}
+                  {!column.sort && <span className="font-weight-normal">{column.render('Header')}</span>}
                 </th>
               ))}
             </tr>
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row) => {
+          {rows.map(row => {
             prepareRow(row);
 
             return (
               <tr className="text-center" {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                {row.cells.map(cell => {
+                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
                 })}
               </tr>
             );

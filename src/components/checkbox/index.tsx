@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled, { StylableProps, colors } from "../../styled";
+import * as React from 'react';
+import styled, { StylableProps, colors } from '../../styled';
 
 interface CheckboxProps extends StylableProps {
   id: string;
@@ -11,12 +11,12 @@ interface CheckboxProps extends StylableProps {
   value?: boolean;
 }
 // TODO: refactor css
-const primaryColor = "#0075ff";
-const deactiveColor = "#5a5358";
+const primaryColor = '#0075ff';
+const deactiveColor = '#5a5358';
 
-const StyledLabel = styled.label<{ poition: "left" | "right" }>`
-  margin-left: ${(props) => (props.poition === "right" ? 8 : 0)}px;
-  margin-right: ${(props) => (props.poition === "left" ? 8 : 0)}px;
+const StyledLabel = styled.label<{ poition: 'left' | 'right' }>`
+  margin-left: ${props => (props.poition === 'right' ? 8 : 0)}px;
+  margin-right: ${props => (props.poition === 'left' ? 8 : 0)}px;
   cursor: pointer;
 `;
 
@@ -35,11 +35,11 @@ const StyledCheckbox = styled.input<{ isAlwaysHighlighted?: boolean }>`
   cursor: pointer;
   width: 32px;
   height: 16px;
-  border: 2px solid ${(props) => (props.isAlwaysHighlighted ? primaryColor : deactiveColor)};
+  border: 2px solid ${props => (props.isAlwaysHighlighted ? primaryColor : deactiveColor)};
   border-radius: 16px;
 
   ::before {
-    content: " ";
+    content: ' ';
     position: absolute;
     transition: all 0.1s;
     top: 2px;
@@ -47,7 +47,7 @@ const StyledCheckbox = styled.input<{ isAlwaysHighlighted?: boolean }>`
     bottom: 2px;
     left: 2px;
     border-radius: 50%;
-    background: ${(props) => (props.isAlwaysHighlighted ? primaryColor : deactiveColor)};
+    background: ${props => (props.isAlwaysHighlighted ? primaryColor : deactiveColor)};
   }
   :checked {
     border-color: ${colors.primary};
@@ -70,7 +70,7 @@ function UICheckbox(props: CheckboxProps) {
         isAlwaysHighlighted={props.alwaysHighlighted}
         type="checkbox"
         id={id}
-        onChange={(e) => {
+        onChange={e => {
           if (props.onChange) {
             props.onChange(e.target.checked);
           }

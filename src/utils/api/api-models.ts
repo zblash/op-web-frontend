@@ -48,6 +48,7 @@ export interface IRegisterResponse {
 }
 
 export interface IRegisterRequest {
+  //merchant için
   cityId: string;
   stateId: string;
   details: string;
@@ -110,6 +111,8 @@ export interface ISpecifyProductRequest {
   discountUnit?: number;
   promotionText?: string;
   customerTypeIdList: string[];
+  promotionType: string;
+  promotionDiscountType: string;
 }
 
 export interface IAddressStateResponse {
@@ -193,6 +196,8 @@ export interface IProductPromotion {
   promotionText: string;
   discountValue: number;
   discountUnit: number;
+  promotionDiscountType: string;
+  promotionType: string;
 }
 
 export interface ICardItemResponse {
@@ -268,6 +273,8 @@ export interface IOrderItems {
   discountedTotalPrice: number;
   unitPrice: number;
   unitType: UnitTypeResponse;
+  unitContents: number;
+  promotionText: string;
 }
 
 export interface IOrder {
@@ -329,6 +336,19 @@ export interface IUserRegisterResponse {
   status: boolean;
   taxNumber: string;
   username: string;
+}
+
+export interface ICustomerRegisterRequest {
+  cityId: string;
+  stateId: string;
+  details: string;
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  taxNumber: string;
+  phoneNumber: string;
+  customerTypeId: string;
 }
 
 export interface INotificationResponse {
@@ -414,20 +434,20 @@ export interface ICustomerTypeResponse {
   typeName: string;
 }
 
-export type UserRoleResponse = "ADMIN" | "MERCHANT" | "CUSTOMER";
+export type UserRoleResponse = 'ADMIN' | 'MERCHANT' | 'CUSTOMER';
 
-export type UnitTypeResponse = "KG" | "KL" | "AD";
+export type UnitTypeResponse = 'KG' | 'KL' | 'AD';
 
-export type TOrderStatus = "NEW" | "FINISHED" | "CONFIRMED" | "CANCELLED" | "CANCEL_REQUEST" | "PREPARED";
+export type TOrderStatus = 'NEW' | 'FINISHED' | 'CONFIRMED' | 'CANCELLED' | 'CANCEL_REQUEST' | 'PREPARED' | 'ON_WAY';
 
-export type TPaymentOption = "SYSTEM_CREDIT" | "MERCHANT_CREDIT" | "COD";
+export type TPaymentOption = 'SYSTEM_CREDIT' | 'MERCHANT_CREDIT' | 'COD';
 
-export type CreditActivityType = "DEBT" | "CREDIT";
+export type CreditActivityType = 'DEBT' | 'CREDIT';
 
-export type CreditType = "SYSTEM_CREDIT" | "MERCHANT_CREDIT";
+export type CreditType = 'SYSTEM_CREDIT' | 'MERCHANT_CREDIT';
 
-export type ActivityType = "SYSTEM_CREDIT" | "MERCHANT_CREDIT" | "ORDER" | "ORDER_CANCEL";
+export type ActivityType = 'SYSTEM_CREDIT' | 'MERCHANT_CREDIT' | 'ORDER' | 'ORDER_CANCEL';
 
-export type CreditPaymentType = "CASH" | "CREDIT_CARD" | "RUNNING_ACCOUNT";
+export type CreditPaymentType = 'CASH' | 'CREDIT_CARD' | 'RUNNING_ACCOUNT';
 
-export type DaysOfWeek = "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY" | "SATURDAY" | "SUNDAY";
+export type DaysOfWeek = 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY';

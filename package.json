@@ -73,6 +73,7 @@
     "react-bootstrap": "^1.6.4",
     "react-datepicker": "^4.2.1",
     "react-hook-form": "^7.17.2",
+    "react-i18next": "^11.14.2",
     "react-icons": "^4.3.1",
     "react-router-dom": "^5.3.0",
     "react-select": "3.2.0",
@@ -81,6 +82,7 @@
     "react-toastify": "^8.0.3",
     "react-use": "^17.3.1",
     "styled-components": "^4.4.0",
+    "swiper": "6.8.4",
     "universal-cookie": "^4.0.4"
   },
   "files": [

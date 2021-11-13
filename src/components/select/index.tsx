@@ -1,6 +1,6 @@
-import React from "react";
-import Select, { components } from "react-select";
-import { UIFillDownIcon } from "../icons";
+import React from 'react';
+import Select, { components } from 'react-select';
+import { AiFillDownCircle } from 'react-icons/ai';
 
 export interface UISelectProps {
   className?: string;
@@ -19,10 +19,10 @@ export interface UISelectProps {
   isDisabled?: boolean;
   onChange?: (s: { value: any; label: string } | Array<{ value: any; label: string }>) => void;
 }
-const DropdownIndicator = (props) => {
+const DropdownIndicator = props => {
   return (
     <components.DropdownIndicator {...props}>
-      <UIFillDownIcon color="#74b126" />
+      <AiFillDownCircle color="#74b126" />
     </components.DropdownIndicator>
   );
 };
