@@ -52,6 +52,4 @@ function QuantityInput(props: QuantityInputProps) {
   );
 }
 
-const PureQuantityInput = React.memo(QuantityInput);
-
-export { PureQuantityInput as QuantityInput };
+export { QuantityInput };
