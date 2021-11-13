@@ -11,6 +11,7 @@ export {
   FaTrash as UITrashIcon,
   FaCamera as UICameraIcon,
   FaChevronCircleUp as UIChevronUpIcon,
+  FaShoppingCart as UIShoppingCartIcon,
 } from 'react-icons/fa';
 
 export { BsInboxes as UIInboxes, BsDot as UIDotIcon } from 'react-icons/bs';
@@ -52,3 +53,4 @@ export { UITableComponent } from './components/table';
 export { UITextArea } from './components/textarea';
 export { OrderListFilterComponent } from './components/order-list-filter';
 export { QuantityInput } from './components/quantity-input';
+export { SpecifyAddToCart } from './components/specify-add-to-cart';
