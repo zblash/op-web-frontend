@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import * as React from "react";
-import { Container } from "react-bootstrap";
-import { UILink } from "../link";
+import * as React from 'react';
+import { Container } from 'react-bootstrap';
+import { UILink } from '../link';
 import {
   UIUserIcon,
   UIMapIcon,
@@ -13,12 +13,12 @@ import {
   UINotificationHornIcon,
   UINotificationIcon,
   UIDownChevronIcon,
-} from "../icons";
-import { useWindowSize } from "../../utils/ui/use-window-size";
-import { HeaderMenu } from "../header-menu/desktop";
-import { MobileHeaderMenu } from "../header-menu/mobile";
-import { TabletHeaderMenu } from "../header-menu/tablet";
-import { IUserInfoResponse } from "../../utils/api/api-models";
+} from '../../index';
+import { useWindowSize } from '../../utils/ui/use-window-size';
+import { HeaderMenu } from '../header-menu/desktop';
+import { MobileHeaderMenu } from '../header-menu/mobile';
+import { TabletHeaderMenu } from '../header-menu/tablet';
+import { IUserInfoResponse } from '../../utils/api/api-models';
 /*
   Header Helpers
 */
@@ -32,7 +32,7 @@ interface HeaderProps {
   Header Styles
 */
 
-const _Header: React.SFC<HeaderProps> = (props) => {
+const _Header: React.SFC<HeaderProps> = props => {
   const { width } = useWindowSize();
 
   return (
