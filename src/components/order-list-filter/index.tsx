@@ -21,13 +21,7 @@ const StyledNameLabel = styled.label`
   padding: 3px;
   float: left;
 `;
-const DatePickerBtn = css`
-  border: 2px solid ${colors.lightGray};
-  border-radius: 4px;
-  width: 99%;
-  padding-left: 1%;
-  height: 26px;
-`;
+
 /* OrderListFilterComponent Component  */
 function OrderListFilterComponent(props: React.PropsWithChildren<OrderListFilterComponentProps>) {
   /* OrderListFilterComponent Variables */
@@ -92,7 +86,6 @@ function OrderListFilterComponent(props: React.PropsWithChildren<OrderListFilter
           onChange={selectedDate => setLastDate(selectedDate)}
           locale="tr"
           dateFormat="yyyy-MM-dd"
-          className={DatePickerBtn}
         />
       </Col>
       <Col lg={3} md={3} xl={3} sm={12} xs={12} className="d-flex justify-content-end align-items-center">

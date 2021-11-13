@@ -17,7 +17,7 @@ export interface UISelectProps {
   isMulti?: boolean;
   inputRef?: any;
   isDisabled?: boolean;
-  onChange?: (s: { value: any; label: string } | Array<{ value: any; label: string }>) => void;
+  onChange?: (s: { value: any; label: string } & Array<{ value: any; label: string }>) => void;
 }
 const DropdownIndicator = props => {
   return (

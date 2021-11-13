@@ -12,6 +12,7 @@
     "outDir": "./dist",
     "target": "es5",
     "module": "esnext",
+    "lib": ["es5", "es6", "ES2017", "dom"],
     "jsx": "react",
     "esModuleInterop": true,
     "skipLibCheck": true,

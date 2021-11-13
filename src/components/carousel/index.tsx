@@ -81,3 +81,6 @@ const Carousel: React.FunctionComponent<CarouselPropsType> = ({
 };
 
 export default Carousel;
+const PureCarousel = React.memo(Carousel);
+
+export { PureCarousel as Carousel };

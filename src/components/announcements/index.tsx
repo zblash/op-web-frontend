@@ -1,12 +1,17 @@
 import * as React from 'react';
 import { IAnnouncement } from '../../utils/api/api-models';
 import { Row, Col } from 'react-bootstrap';
+import styled from '../../styled';
 
 const Slider = React.lazy(() => import('react-slick'));
 /* AnnouncementComponent Helpers */
 interface AnnouncementComponentProps {
   announcements?: IAnnouncement[];
 }
+const SliderImg = styled.img`
+  height: 600px;
+  width: 100%;
+`;
 
 /* AnnouncementComponent Component  */
 function AnnouncementComponent(props: React.PropsWithChildren<AnnouncementComponentProps>) {
