@@ -31,6 +31,10 @@ export {
   AiOutlineDown as UIOutlineDownIcon,
 } from 'react-icons/ai';
 
+export { Eye as UIEyeIcon } from './components/custom-icons/eye-icon';
+
+export { EyeOff as UIEyeOffIcon } from './components/custom-icons/eye-off-icon';
+
 export { UIContainer } from './components/container/index';
 export { AnnouncementComponent } from './components/announcements';
 export { Carousel } from './components/carousel';

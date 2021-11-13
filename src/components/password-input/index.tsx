@@ -1,5 +1,5 @@
-import React, { InputHTMLAttributes, useState } from "react";
-import { EyeOff, Eye } from "../icons";
+import React, { InputHTMLAttributes, useState } from 'react';
+import { UIEyeOffIcon, UIEyeIcon } from '../../index';
 
 export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
@@ -12,11 +12,11 @@ export interface Props extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
-  ({ className = "block", inputClassName, labelKey, labelClassName, name, errorKey, shadow = false, ...rest }, ref) => {
+  ({ className = 'block', inputClassName, labelKey, labelClassName, name, errorKey, shadow = false, ...rest }, ref) => {
     const [show, setShow] = useState(false);
 
     return (
-      <div className={`form-group ${className || ""}`}>
+      <div className={`form-group ${className || ''}`}>
         {labelKey && (
           <label className={labelClassName} htmlFor={name}>
             {labelKey}
@@ -26,23 +26,23 @@ const PasswordInput = React.forwardRef<HTMLInputElement, Props>(
           <input
             id={name}
             name={name}
-            type={show ? "text" : "password"}
+            type={show ? 'text' : 'password'}
             ref={ref}
-            className={`form-control border ${inputClassName || ""}`}
+            className={`form-control border ${inputClassName || ''}`}
             autoComplete="off"
             autoCapitalize="off"
             spellCheck="false"
             {...rest}
           />
           {show ? (
-            <EyeOff
+            <UIEyeOffIcon
               onClick={() => {
                 setShow(false);
               }}
               className="h-50 login-page__eye-icon position-absolute"
             />
           ) : (
-            <Eye
+            <UIEyeIcon
               onClick={() => {
                 setShow(true);
               }}

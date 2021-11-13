@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import * as React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Logo from "../images/logo/flogo.png";
+import * as React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import Logo from '../images/logo/flogo.png';
 import {
   UILogoutSecondIcon,
   UIOutlineDownIcon,
@@ -12,9 +12,9 @@ import {
   UIInstagramIcon,
   UILinkedInIcon,
   UINotificationIcon,
-} from "../icons";
-import { UILink } from "../link";
-import { useWindowSize } from "../../utils/ui/use-window-size";
+} from '../../index';
+import { UILink } from '../link';
+import { useWindowSize } from '../../utils/ui/use-window-size';
 /* MobileHeaderMenu Helpers */
 interface TabletHeaderMenuProps {
   isAuthenticated: boolean;
@@ -25,7 +25,7 @@ interface TabletHeaderMenuProps {
 /* MobileHeaderMenu Styles */
 
 /* MobileHeaderMenu Component  */
-const TabletHeaderMenu: React.SFC<TabletHeaderMenuProps> = (props) => {
+const TabletHeaderMenu: React.SFC<TabletHeaderMenuProps> = props => {
   /* MobileHeaderMenu Variables */
   const { width } = useWindowSize();
   const [isOpened, setIsOpened] = React.useState(false);
@@ -42,7 +42,7 @@ const TabletHeaderMenu: React.SFC<TabletHeaderMenuProps> = (props) => {
               <Col sm={4} md={4} xs={4} className="header__left d-flex justify-content-start align-items-center">
                 <div
                   onClick={() => {
-                    setIsOpened((prev) => !prev);
+                    setIsOpened(prev => !prev);
                   }}
                 >
                   <span />
@@ -70,7 +70,7 @@ const TabletHeaderMenu: React.SFC<TabletHeaderMenuProps> = (props) => {
                 )}
               </Col>
             </Row>
-            <div className={`${isOpened ? "remain__menu-block" : "remain__menu-none"}`}>
+            <div className={`${isOpened ? 'remain__menu-block' : 'remain__menu-none'}`}>
               <Row className="mb-3 border-top">
                 <Col className="remain__menu">
                   <ul>

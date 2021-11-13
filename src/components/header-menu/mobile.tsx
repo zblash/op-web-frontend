@@ -20,7 +20,7 @@ import {
   UIDotIcon,
   UIInboxes,
   UIPackageIcon,
-} from '../icons';
+} from '../../index';
 import { UILink } from '../link';
 import { useWindowSize } from '../../utils/ui/use-window-size';
 /* MobileHeaderMenu Helpers */

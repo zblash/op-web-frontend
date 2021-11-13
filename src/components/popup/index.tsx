@@ -1,8 +1,8 @@
-import * as React from "react";
-import styled from "../../styled";
-import { useStateFromProp } from "../../utils/hooks";
-import { UICloseIcon } from "../icons";
-import { Portal } from "../portal";
+import * as React from 'react';
+import styled from '../../styled';
+import { useStateFromProp } from '../../utils/hooks';
+import { UICloseIcon } from '../../index';
+import { Portal } from '../portal';
 
 interface PopupProps {
   isShown: boolean;
@@ -15,8 +15,8 @@ interface PopupProps {
   Popup Colors // TODO : move theme.json
 */
 export const PopupColors = {
-  wrapperBackground: "transparent",
-  overlayBackground: "rgba(0, 0, 0, 0.3)",
+  wrapperBackground: 'transparent',
+  overlayBackground: 'rgba(0, 0, 0, 0.3)',
 };
 
 /*
@@ -47,7 +47,7 @@ const PopupDefaultProps = {
   shouldShowCloseIcon: true,
 };
 
-const _Popup: React.SFC<PopupProps> = (props) => {
+const _Popup: React.SFC<PopupProps> = props => {
   const [isShown, setIsShown] = useStateFromProp(props.isShown);
   const { children, hideOnOverlayClicked, onClose, shouldShowCloseIcon } = { ...PopupDefaultProps, ...props };
   const __ = (
@@ -61,7 +61,7 @@ const _Popup: React.SFC<PopupProps> = (props) => {
         }
       >
         <StyledPopup
-          onClick={(e) => {
+          onClick={e => {
             e.stopPropagation();
           }}
         >

@@ -1,14 +1,14 @@
-import * as React from "react";
-import { UIDownChevronIcon, UIChevronUpIcon } from "../icons";
-import { useStateFromProp } from "../../utils/hooks";
-import { Button } from "react-bootstrap";
+import * as React from 'react';
+import { UIDownChevronIcon, UIChevronUpIcon } from '../../index';
+import { useStateFromProp } from '../../utils/hooks';
+import { Button } from 'react-bootstrap';
 
 /* TableColumnSortComponent Helpers */
 interface TableColumnSortComponentProps {
   onSortChange: (item: string, sortType: string) => void;
   item: string;
   title: string | React.ReactElement;
-  sortType: "asc" | "desc";
+  sortType: 'asc' | 'desc';
 }
 
 /* TableColumnSortComponent Constants */
@@ -36,10 +36,10 @@ function TableColumnSortComponent(props: React.PropsWithChildren<TableColumnSort
       <Button
         className="d-flex justify-content-between align-items-center"
         variant="link"
-        onClick={() => setSortType((prevState) => (prevState === "asc" ? "desc" : "asc"))}
+        onClick={() => setSortType(prevState => (prevState === 'asc' ? 'desc' : 'asc'))}
       >
         <span className="pr-1">{props.title}</span>
-        {sortType === "asc" ? <UIChevronUpIcon /> : <UIDownChevronIcon />}
+        {sortType === 'asc' ? <UIChevronUpIcon /> : <UIDownChevronIcon />}
       </Button>
     </div>
   );
