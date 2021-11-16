@@ -111,7 +111,7 @@ class MutationEndpoints {
 
   removeItemFromCart: (s: { id: string }) => Promise<any> = ({ id }) =>
     ApiCallService.request(new (ApiCall as any)().setUrl(`/cart/${id}`).delete()).then(item => ({
-      ...item,
+      ...(item as {}),
       removed: true,
     }));
 
