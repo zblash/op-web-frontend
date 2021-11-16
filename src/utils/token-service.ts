@@ -1,24 +1,24 @@
 /* eslint-disable camelcase */
-import Cookies from "universal-cookie";
+import Cookies from 'universal-cookie';
 // eslint-disable-next-line @typescript-eslint/camelcase
-import jwt_decode from "jwt-decode";
-import { IBaseUser } from "./api/api-models";
+import jwt_decode from 'jwt-decode';
+import { IBaseUser } from './api/api-models';
 
 const TokenService = (function () {
   function saveToken(token: string) {
     const cookies = new Cookies();
-    cookies.set("token", token, { path: "/" });
+    cookies.set('token', token, { path: '/' });
   }
 
   function getToken(): string {
     const cookies = new Cookies(null);
 
-    return cookies.get("token");
+    return cookies.get('token');
   }
 
   function removeToken() {
     const cookies = new Cookies();
-    cookies.remove("token", { path: "/" });
+    cookies.remove('token', { path: '/' });
   }
 
   function decodeToken(token: string): IBaseUser | undefined {
@@ -45,4 +45,4 @@ const TokenService = (function () {
   return { saveToken, getToken, removeToken, decodeToken, isExpired };
 })();
 
-export default TokenService;
+export { TokenService };
