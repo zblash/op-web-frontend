@@ -1,4 +1,5 @@
 import {
+  IPaymentMethodsResponse,
   ICategoryResponse,
   IProductResponse,
   IAddressStateResponse,
@@ -16,8 +17,6 @@ import {
   IOrderSummary,
   ICustomerTypeResponse,
   ICreditResponse,
-  ICardResponse,
-  IPaymentMethodsResponse,
 } from './api-models';
 import { ApiCall, ApiCallService } from './ApiCall';
 
@@ -39,9 +38,6 @@ class QueryEndpoints {
 
   getSubCategoriesByParentId: (s: { parentId: string }) => Promise<ICategoryResponse[]> = ({ parentId }) =>
     ApiCallService.request(new (ApiCall as any)().setUrl(`/categories/${parentId}/subCategories`, true).get());
-
-  getCart: () => Promise<ICardResponse> = () =>
-    ApiCallService.request(new (ApiCall as any)().setUrl('/cart', true).get());
 
   getCategoryByID: (s: { id: string }) => Promise<ICategoryResponse> = ({ id }) =>
     ApiCallService.request(new (ApiCall as any)().setUrl(`/categories/${id}`, true).get());
@@ -120,6 +116,12 @@ class QueryEndpoints {
 
   getCustomerTypes: () => Promise<Array<ICustomerTypeResponse>> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/definitions/customerTypes', false).get());
+
+  getDiscountTypes: () => Promise<Array<string>> = () =>
+    ApiCallService.request(new (ApiCall as any)().setUrl('/definitions/promotionDiscountTypes', false).get());
+
+  getPromotionTypes: () => Promise<Array<string>> = () =>
+    ApiCallService.request(new (ApiCall as any)().setUrl('/definitions/promotionTypes', false).get());
 }
 const queryEndpoints = new QueryEndpoints();
 
