@@ -438,7 +438,7 @@ export type UserRoleResponse = 'ADMIN' | 'MERCHANT' | 'CUSTOMER';
 
 export type UnitTypeResponse = 'KG' | 'KL' | 'AD';
 
-export type TOrderStatus = 'NEW' | 'FINISHED' | 'CONFIRMED' | 'CANCELLED' | 'CANCEL_REQUEST' | 'PREPARED';
+export type TOrderStatus = 'NEW' | 'FINISHED' | 'CONFIRMED' | 'CANCELLED' | 'CANCEL_REQUEST' | 'PREPARED' | 'ON_WAY';
 
 export type TPaymentOption = 'SYSTEM_CREDIT' | 'MERCHANT_CREDIT' | 'COD';
 
