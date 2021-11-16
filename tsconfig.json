@@ -4,6 +4,7 @@
     "declarationDir": "./dist",
     "strict": true,
     "noImplicitAny": false,
+    "noImplicitThis": false,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "noUnusedParameters": false,
