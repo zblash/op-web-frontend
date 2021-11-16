@@ -55,7 +55,7 @@ export {
 } from './utils/api/api-models';
 
 export { mutationEndPoints } from './utils/api/mutation-endpoints';
-export { paginatedQueryEndpoints } from './utils/api/paginated-query-endpoints';
+export { paginatedQueryEndpoints, GetCategoriesVariables } from './utils/api/paginated-query-endpoints';
 export { queryEndpoints } from './utils/api/query-endpoints';
 export { ApiCall, ApiCallService } from './utils/ApiCall';
 
