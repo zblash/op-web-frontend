@@ -3,6 +3,9 @@ export { useOnClickOutside } from './utils/ui/use-click-outside';
 export { useLocalStorage } from './utils/ui/use-local-storage';
 export { scrollToRef } from './utils/node';
 export {
+  MaybeArray,
+  twoDigit,
+  makeid,
   getDisplayName,
   narrowObject,
   stringLitArray,
