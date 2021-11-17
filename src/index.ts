@@ -1,3 +1,6 @@
+export { useWindowSize } from './utils/ui/use-window-size';
+export { useOnClickOutside } from './utils/ui/use-click-outside';
+export { useLocalStorage } from './utils/ui/use-local-storage';
 export {
   IBaseUser,
   IUserInfoResponse,
