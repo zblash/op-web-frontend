@@ -100,6 +100,7 @@ export {
 export { Eye as UIEyeIcon } from './components/custom-icons/eye-icon';
 
 export { EyeOff as UIEyeOffIcon } from './components/custom-icons/eye-off-icon';
+export { CheckHealth } from './components/check-health';
 
 export { UIContainer } from './components/container/index';
 export { AnnouncementComponent } from './components/announcements';
