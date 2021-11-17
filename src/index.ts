@@ -1,6 +1,32 @@
 export { useWindowSize } from './utils/ui/use-window-size';
 export { useOnClickOutside } from './utils/ui/use-click-outside';
 export { useLocalStorage } from './utils/ui/use-local-storage';
+export { scrollToRef } from './utils/node';
+export {
+  getDisplayName,
+  narrowObject,
+  stringLitArray,
+  isArray,
+  isObject,
+  getKeyByValue,
+  objectKeys,
+  objectValues,
+  objectForeach,
+  asyncMap,
+  objectMap,
+} from './utils/index';
+export {
+  useStateFromProp,
+  usePrevious,
+  useKeepValue,
+  useStateWithCallback,
+  useWindowEvent,
+  useObjectState,
+  useArrayState,
+  useMemoWithPrevDeps,
+  useAlert,
+} from './utils/hooks';
+
 export {
   IBaseUser,
   IUserInfoResponse,
