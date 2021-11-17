@@ -28,6 +28,7 @@ export {
   useArrayState,
   useMemoWithPrevDeps,
   useAlert,
+  useLocationQueryParams,
 } from './utils/hooks';
 
 export {
