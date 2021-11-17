@@ -17,6 +17,7 @@ import {
   IOrderSummary,
   ICustomerTypeResponse,
   ICreditResponse,
+  ICardResponse,
 } from './api-models';
 import { ApiCall, ApiCallService } from './ApiCall';
 
@@ -122,6 +123,9 @@ class QueryEndpoints {
 
   getPromotionTypes: () => Promise<Array<string>> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/definitions/promotionTypes', false).get());
+
+  getCart: () => Promise<ICardResponse> = () =>
+    ApiCallService.request(new (ApiCall as any)().setUrl('/cart', true).get());
 }
 const queryEndpoints = new QueryEndpoints();
 
