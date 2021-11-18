@@ -1,7 +1,3 @@
-export { useWindowSize } from './utils/ui/use-window-size';
-export { useOnClickOutside } from './utils/ui/use-click-outside';
-export { useLocalStorage } from './utils/ui/use-local-storage';
-export { scrollToRef } from './utils/node';
 export {
   MaybeArray,
   twoDigit,
@@ -17,7 +13,9 @@ export {
   objectForeach,
   asyncMap,
   objectMap,
-} from './utils/index';
+  useLocationQueryParams,
+  scrollToRef,
+} from './utils/helpers';
 export {
   useStateFromProp,
   usePrevious,
@@ -28,7 +26,9 @@ export {
   useArrayState,
   useMemoWithPrevDeps,
   useAlert,
-  useLocationQueryParams,
+  useOnClickOutside,
+  useWindowSize,
+  useLocalStorage,
 } from './utils/hooks';
 
 export {

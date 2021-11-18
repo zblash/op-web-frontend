@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 type MaybeArray<T> = T | T[];
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -88,6 +90,30 @@ async function asyncMap(array: (() => Promise<any>)[]): Promise<any> {
   return Promise.resolve();
 }
 
+function useLocationQueryParams() {
+  const url = new URL(window.location.href);
+
+  function getParam(key) {
+    return url.searchParams.get(key) || '';
+  }
+
+  function setParam(key, value) {
+    url.searchParams.set(key, value);
+    window.history.pushState({}, '', url.toString());
+  }
+
+  return { setParam, getParam };
+}
+
+function scrollToRef(ref: React.RefObject<any>) {
+  if (ref.current) {
+    window.scrollTo({
+      top: ref.current.offsetTop - 150,
+      behavior: 'smooth',
+    });
+  }
+}
+
 export {
   MaybeArray,
   twoDigit,
@@ -103,4 +129,6 @@ export {
   objectForeach,
   asyncMap,
   objectMap,
+  useLocationQueryParams,
+  scrollToRef,
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast, TypeOptions } from 'react-toastify';
-import { useWindowSize } from './ui/use-window-size';
-import { useLocation } from 'react-router-dom';
+import useLocalStorage from 'react-use/lib/useLocalStorage';
+import useWindowSize from 'react-use/lib/useWindowSize';
 
 function useStateFromProp<T>(initialValue: T): [T, React.Dispatch<React.SetStateAction<T>>] {
   const [value, setValue] = React.useState(initialValue);
@@ -96,19 +96,28 @@ function useAlert() {
   return { show };
 }
 
-function useLocationQueryParams() {
-  const url = new URL(window.location.href);
+type Event = MouseEvent | TouchEvent;
 
-  function getParam(key) {
-    return url.searchParams.get(key) || '';
-  }
+function useOnClickOutside<T extends HTMLElement = HTMLElement>(
+  ref: React.RefObject<T>,
+  handler: (event: Event) => void,
+) {
+  React.useEffect(() => {
+    const listener = (event: Event) => {
+      const el = ref?.current;
+      if (!el || el.contains((event?.target as Node) || null)) {
+        return;
+      }
+      handler(event);
+    };
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
 
-  function setParam(key, value) {
-    url.searchParams.set(key, value);
-    window.history.pushState({}, '', url.toString());
-  }
-
-  return { setParam, getParam };
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+    };
+  }, [ref, handler]);
 }
 
 export {
@@ -121,5 +130,7 @@ export {
   useArrayState,
   useMemoWithPrevDeps,
   useAlert,
-  useLocationQueryParams,
+  useOnClickOutside,
+  useWindowSize,
+  useLocalStorage,
 };
