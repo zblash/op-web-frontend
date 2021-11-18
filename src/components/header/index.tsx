@@ -14,7 +14,7 @@ import {
   UINotificationIcon,
   UIDownChevronIcon,
 } from '../../index';
-import { useWindowSize } from '../../utils/ui/use-window-size';
+import { useWindowSize } from '../../utils/hooks';
 import { HeaderMenu } from '../header-menu/desktop';
 import { MobileHeaderMenu } from '../header-menu/mobile';
 import { TabletHeaderMenu } from '../header-menu/tablet';
