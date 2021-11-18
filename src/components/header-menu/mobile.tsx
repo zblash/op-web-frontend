@@ -22,7 +22,7 @@ import {
   UIPackageIcon,
 } from '../../index';
 import { UILink } from '../link';
-import { useWindowSize } from '../../utils/ui/use-window-size';
+import { useWindowSize } from '../../utils/hooks';
 /* MobileHeaderMenu Helpers */
 interface MobileHeaderMenuProps {
   isAuthenticated: boolean;
