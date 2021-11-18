@@ -1,6 +1,6 @@
 {
   "name": "@onlineplasiyer/op-web-fronted",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "main": "dist",
   "scripts": {
     "build": "rollup -c",
