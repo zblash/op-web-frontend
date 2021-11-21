@@ -95,7 +95,22 @@ export { ApiCall, ApiCallService } from './utils/ApiCall';
 export { TokenService } from './utils/token-service';
 
 export { productsQueryKeys, productSpecifiesQueryKeys } from './utils/query-factories/products-query-factory';
+export { creditsQueryKeys, creditActivitiesQueryKeys } from './utils/query-factories/credits-query-factory';
 export { ordersQueryKeys } from './utils/query-factories/orders-query-factory';
+export { categoriesQueryKeys } from './utils/query-factories/categories-query-factory';
+export { ticketsQueryKeys } from './utils/query-factories/tickets-query-factory';
+
+export {
+  statesQueryKeys,
+  citiesQueryKeys,
+  shippingDaysQueryKeys,
+  promotionTypesQueryKeys,
+  discountTypesQueryKeys,
+  paymentMethodsQueryKeys,
+  customerTypesQueryKeys,
+  merchantShippingDaysQueryKeys,
+  userInfosQueryKeys,
+} from './utils/query-factories/definitions-query-factory';
 
 export {
   FaUserCircle as UIUserIcon,

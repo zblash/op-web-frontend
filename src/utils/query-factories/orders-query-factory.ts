@@ -1,7 +1,7 @@
 import { TOrderStatus } from '../api/api-models';
-import { BaseFactory } from './base-factory';
+import { BaseKeysFactory } from './base-factory';
 
-export const ordersQueryKeys = BaseFactory('products', {
+export const ordersQueryKeys = BaseKeysFactory('products', {
   list: (s: {
     userId?: string;
     userName?: string;
