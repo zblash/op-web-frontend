@@ -94,6 +94,9 @@ export { ApiCall, ApiCallService } from './utils/ApiCall';
 
 export { TokenService } from './utils/token-service';
 
+export { productsQueryKeys, productSpecifiesQueryKeys } from './utils/query-factories/products-query-factory';
+export { ordersQueryKeys } from './utils/query-factories/orders-query-factory';
+
 export {
   FaUserCircle as UIUserIcon,
   FaMapMarkedAlt as UIMapIcon,
