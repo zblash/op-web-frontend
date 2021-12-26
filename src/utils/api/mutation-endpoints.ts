@@ -23,6 +23,14 @@ import {
 import { ApiCallService, ApiCall } from './ApiCall';
 
 class MutationEndpoints {
+  adminLogin: (s: { username: string; password: string }) => Promise<ILoginResponse> = ({ username, password }) => {
+    ApiCallService.unRegisterAuthToken();
+
+    return ApiCallService.request(
+      new (ApiCall as any)().setUrl('/admin/login', false).setData({ username, password }).post(),
+    );
+  };
+
   merchantLogin: (s: { username: string; password: string }) => Promise<ILoginResponse> = ({ username, password }) => {
     ApiCallService.unRegisterAuthToken();
 
