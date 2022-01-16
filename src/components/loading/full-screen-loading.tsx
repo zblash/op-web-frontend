@@ -1,18 +1,20 @@
-import * as React from "react";
-import styled, { StylableProps } from "../../styled";
-import Portal from "../portal";
-import { DefaultLoading } from "./default-loading";
+import * as React from 'react';
+import styled from 'styled-components';
+import Portal from '../portal';
+import { DefaultLoading } from './default-loading';
 
 /*
   FullScreenLoading Helpers
 */
-type FullScreenLoadingProps = StylableProps;
+interface FullScreenLoadingProps {
+  className?: string;
+}
 
 /*
   FullScreenLoading Colors // TODO : move theme.json
 */
 const FullScreenLoadingColors = {
-  wrapperBackground: "#fff",
+  wrapperBackground: '#fff',
 };
 
 /*
@@ -30,7 +32,7 @@ const StyledFullScreenLoadingWrapper = styled.div`
   z-index: 999;
 `;
 
-const FullScreenLoading: React.SFC<FullScreenLoadingProps> = React.memo((props) => (
+const FullScreenLoading: React.SFC<FullScreenLoadingProps> = React.memo(props => (
   <Portal>
     <StyledFullScreenLoadingWrapper className={props.className}>
       <DefaultLoading />

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from '../../styled';
+import styled from 'styled-components';
 import { useStateFromProp } from '../../utils/hooks';
 import { UICloseIcon } from '../../index';
 import { Portal } from '../portal';

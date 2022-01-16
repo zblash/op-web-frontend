@@ -186,12 +186,26 @@ export interface ISpecifyProductResponse {
   customerTypeList: ICustomerTypeResponse[];
 }
 
+export interface ICustomerGroupResponse {
+  id: string;
+  groupName: string;
+  discount: number;
+}
+
 export interface ICommonMerchantResponse {
   merchantId: string;
   merchantName: string;
   merchantScore: number;
 }
 
+export interface ICommonCustomerResponse {
+  id: string;
+  username: string;
+  name: string;
+  address: IAddressResponse;
+  customerType: ICustomerTypeResponse;
+  ICustomerGroupResponse: ICustomerGroupResponse[];
+}
 export interface IProductPromotion {
   promotionText: string;
   discountValue: number;

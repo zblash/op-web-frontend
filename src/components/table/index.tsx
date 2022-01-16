@@ -4,13 +4,15 @@ import { Table } from 'react-bootstrap';
 import { TableColumnSortComponent } from './sort';
 import { Pagination } from '../pagination';
 
+export type UITableSortTypes = 'asc' | 'desc';
+export type UITableCustomRendererTypes = React.ReactElement | string | number;
 interface UITableColumnProps<T> {
   Header: string;
   accessor: string;
   sortName?: string;
   sort?: boolean;
-  sortType?: 'asc' | 'desc';
-  customRenderer?: (item: T) => React.ReactElement | string | number;
+  sortType?: UITableSortTypes;
+  customRenderer?: (item: T) => UITableCustomRendererTypes;
 }
 
 function useTableRowNormalizator<T>(items: UITableColumnProps<T>[]) {

@@ -90,7 +90,7 @@ export {
 export { mutationEndPoints } from './utils/api/mutation-endpoints';
 export { paginatedQueryEndpoints, GetCategoriesVariables } from './utils/api/paginated-query-endpoints';
 export { queryEndpoints } from './utils/api/query-endpoints';
-export { ApiCall, ApiCallService } from './utils/ApiCall';
+export { ApiCall, ApiCallService } from './utils/api/ApiCall';
 
 export { TokenService } from './utils/token-service';
 
@@ -99,7 +99,7 @@ export { creditsQueryKeys, creditActivitiesQueryKeys } from './utils/query-facto
 export { ordersQueryKeys } from './utils/query-factories/orders-query-factory';
 export { categoriesQueryKeys } from './utils/query-factories/categories-query-factory';
 export { ticketsQueryKeys } from './utils/query-factories/tickets-query-factory';
-
+export { searchQueryKeys } from './utils/query-factories/searches-query-factory';
 export {
   statesQueryKeys,
   citiesQueryKeys,
@@ -173,3 +173,5 @@ export { UITextArea } from './components/textarea';
 export { OrderListFilterComponent } from './components/order-list-filter';
 export { QuantityInput } from './components/quantity-input';
 export { SpecifyAddToCart } from './components/specify-add-to-cart';
+export { OrderListComponent } from './components/order-list';
+export { SearchComponent } from './components/search-component';

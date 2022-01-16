@@ -1,6 +1,6 @@
-import * as React from "react";
-import styled, { colors } from "../../styled";
-import { Loading } from "./loading";
+import * as React from 'react';
+import styled from 'styled-components';
+import { Loading } from './loading';
 
 /*
   DefaultLoading Helpers
@@ -18,7 +18,7 @@ const StyledDefaultLoadingWrapper = styled.div`
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background-color: "transparent";
+  background-color: 'transparent';
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +26,7 @@ const StyledDefaultLoadingWrapper = styled.div`
 
 const DefaultLoading: React.FC = () => (
   <StyledDefaultLoadingWrapper>
-    <Loading size={70} color={colors.primary} />
+    <Loading size={70} color="#74B126" />
   </StyledDefaultLoadingWrapper>
 );
 

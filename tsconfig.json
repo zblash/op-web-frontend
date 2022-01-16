@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strictFunctionTypes": false,
     "declaration": true,
     "declarationDir": "./dist",
     "strict": true,

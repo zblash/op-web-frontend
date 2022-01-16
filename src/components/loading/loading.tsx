@@ -1,9 +1,10 @@
 import * as React from 'react';
-import styled, { StylableProps, css } from '../../styled';
+import styled from 'styled-components';
 
-interface ILoadingProps extends StylableProps {
+interface ILoadingProps {
   color?: string;
   size?: number;
+  className?: string;
 }
 
 const LOADING_DEFAULT_COLOR = 'currentColor';

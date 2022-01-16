@@ -18,6 +18,8 @@ import {
   ICustomerTypeResponse,
   ICreditResponse,
   ICardResponse,
+  ICommonMerchantResponse,
+  ICommonCustomerResponse,
 } from './api-models';
 import { ApiCall, ApiCallService } from './ApiCall';
 
@@ -126,6 +128,14 @@ class QueryEndpoints {
 
   getCart: () => Promise<ICardResponse> = () =>
     ApiCallService.request(new (ApiCall as any)().setUrl('/cart', true).get());
+
+  getSearchMerchants: (s: { merchantName: string }) => Promise<ICommonMerchantResponse[]> = ({ merchantName }) =>
+    ApiCallService.request(new (ApiCall as any)().setUrl(`/merchants/search?merchantName=${merchantName}`, true).get());
+
+  getSearchCustomers: (s: { customerName: string }) => Promise<ICommonCustomerResponse[]> = ({ customerName }) =>
+    ApiCallService.request(
+      new (ApiCall as any)().setUrl(`/customers/search?customerUsername=${customerName}`, true).get(),
+    );
 }
 const queryEndpoints = new QueryEndpoints();
 

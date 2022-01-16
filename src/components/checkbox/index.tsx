@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, { StylableProps, colors } from '../../styled';
+import styled from 'styled-components';
 
-interface CheckboxProps extends StylableProps {
+interface CheckboxProps {
   id: string;
   label: React.ReactElement | string;
   hasError?: boolean;
@@ -9,6 +9,7 @@ interface CheckboxProps extends StylableProps {
   onChange?: (isChecked: boolean) => void;
   alwaysHighlighted?: boolean;
   value?: boolean;
+  className?: string;
 }
 // TODO: refactor css
 const primaryColor = '#0075ff';
@@ -50,11 +51,11 @@ const StyledCheckbox = styled.input<{ isAlwaysHighlighted?: boolean }>`
     background: ${props => (props.isAlwaysHighlighted ? primaryColor : deactiveColor)};
   }
   :checked {
-    border-color: ${colors.primary};
+    border-color: ${primaryColor};
     ::before {
       right: 2px;
       left: 18px;
-      background: ${colors.primary};
+      background: ${primaryColor};
     }
   }
 `;

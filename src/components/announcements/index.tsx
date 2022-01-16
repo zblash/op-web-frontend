@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IAnnouncement } from '../../utils/api/api-models';
 import { Row, Col } from 'react-bootstrap';
-import styled from '../../styled';
+import styled from 'styled-components';
 
 const Slider = React.lazy(() => import('react-slick'));
 /* AnnouncementComponent Helpers */

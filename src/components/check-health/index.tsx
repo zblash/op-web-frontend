@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { CgDanger } from 'react-icons/cg';
 import { ApiCallService, ApiCall } from '../../utils/api/ApiCall';
 import { FullScreenLoading } from '../loading/full-screen-loading';
-import styled from '../../styled';
+import styled from 'styled-components';
 
 const StyledPageContainer = styled.div`
   width: 100%;
