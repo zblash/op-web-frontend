@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
-import { UpdateOrderPopupComponent } from './update-order-popup';
 import { TOrderStatus, IOrder, CreditPaymentType } from '../../utils/api/api-models';
 import { UILink } from '../..';
-import { UITableSortTypes, UITableCustomRendererTypes, UITableComponent } from '../table';
 
-/* OrderListComponent Helpers */
-interface OrderListComponentProps {
+/* CustomerListComponent Helpers */
+interface CustomerListComponentProps {
   orders: IOrder[];
   elementCountOfPage: number;
   setSortBy: (e: any) => void;
@@ -22,7 +20,7 @@ interface OrderListComponentProps {
   sortObject?: { sortName: string; sortType: 'asc' | 'desc' };
 }
 
-/* OrderListComponent Constants */
+/* CustomerListComponent Constants */
 const ORDER_STATUS_MAP: Record<TOrderStatus, string> = {
   NEW: 'Yeni',
   FINISHED: 'Teslim Edildi',
@@ -32,15 +30,15 @@ const ORDER_STATUS_MAP: Record<TOrderStatus, string> = {
   PREPARED: 'Hazirlaniyor/Hazir',
   ON_WAY: 'Yolda',
 };
-/* OrderListComponent Styles */
+/* CustomerListComponent Styles */
 
-/* OrderListComponent Component  */
-function OrderListComponent(props: React.PropsWithChildren<OrderListComponentProps>) {
-  /* OrderListComponent Variables */
+/* CustomerListComponent Component  */
+function CustomerListComponent(props: React.PropsWithChildren<CustomerListComponentProps>) {
+  /* CustomerListComponent Variables */
   const { t } = useTranslation();
   const [selectedItemForUpdate, setSelectedItemForUpdate] = React.useState<IOrder>();
   const [isPopupOpened, setIsPopupOpened] = React.useState<boolean>(false);
-  /* OrderListComponent Callbacks */
+  /* CustomerListComponent Callbacks */
 
   const memoColumns = React.useMemo(() => {
     const columns = [
@@ -118,7 +116,7 @@ function OrderListComponent(props: React.PropsWithChildren<OrderListComponentPro
       },
     ]);
   }, [props, t]);
-  /* OrderListComponent Lifecycle  */
+  /* CustomerListComponent Lifecycle  */
 
   return (
     <>
@@ -150,6 +148,6 @@ function OrderListComponent(props: React.PropsWithChildren<OrderListComponentPro
     </>
   );
 }
-const PureOrderListComponent = React.memo(OrderListComponent);
+const PureCustomerListComponent = React.memo(CustomerListComponent);
 
-export { PureOrderListComponent as OrderListComponent };
+export { PureCustomerListComponent as CustomerListComponent };

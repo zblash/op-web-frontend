@@ -1,18 +1,27 @@
 import * as React from 'react';
-import DatePicker from 'react-datepicker';
 import { Button, Row, Col } from 'react-bootstrap';
 import { TOrderStatus } from '../../utils/api/api-models';
-import styled, { css } from 'styled-components';
-import { UISelect, UIInput } from '../..';
+import styled from 'styled-components';
+import { UISelect, DatePickerComponent } from '../..';
 import { SearchComponent, ResultItem } from '../search-component';
+import { FiltersComponent } from '../filters';
 
 /* OrderListFilterComponent Helpers */
-interface OrderListFilterComponentProps {
-  setCustomerId?: (e: string) => void;
-  setMerchantId?: (e: string) => void;
-  setLastDate: (e: Date) => void;
-  setStatus: (e: TOrderStatus) => void;
+interface FilterSubmitParams {
+  customerId?: string;
+  merchantId?: string;
+  startDate?: Date;
+  endDate?: Date;
   status?: TOrderStatus;
+}
+
+interface OrderListFilterComponentProps {
+  selectedStatus?: TOrderStatus;
+  selectedCustomer?: ResultItem;
+  selectedMerchant?: ResultItem;
+  selectedStartDate?: Date;
+  selectedEndDate?: Date;
+  onSubmit: (e: FilterSubmitParams) => void;
   showCustomerFilter?: boolean;
   showMerchantFilter?: boolean;
   filteredCustomerList?: Array<ResultItem>;
@@ -23,11 +32,6 @@ interface OrderListFilterComponentProps {
 /* OrderListFilterComponent Constants */
 
 /* OrderListFilterComponent Styles */
-const StyledNameLabel = styled.label`
-  margin-right: 7px;
-  padding: 3px;
-  float: left;
-`;
 
 /* OrderListFilterComponent Component  */
 function OrderListFilterComponent(props: React.PropsWithChildren<OrderListFilterComponentProps>) {
@@ -42,99 +46,117 @@ function OrderListFilterComponent(props: React.PropsWithChildren<OrderListFilter
       { value: 'CANCEL_REQUEST', label: 'Iptal Isteginde' },
     ];
   }, []);
-  const [customerId, setCustomerId] = React.useState<string>();
-  const [merchantId, setMerchantId] = React.useState<string>();
-  const [customerName, setCustomerName] = React.useState<string>('');
-  const [merchantName, setMerchantName] = React.useState<string>('');
-  const [lastDate, setLastDate] = React.useState<Date>();
+  const [customerId, setCustomerId] = React.useState<string>(props.selectedCustomer ? props.selectedCustomer.id : '');
+  const [merchantId, setMerchantId] = React.useState<string>(props.selectedMerchant ? props.selectedMerchant.id : '');
+  const [customerName, setCustomerName] = React.useState<string>(
+    props.selectedCustomer ? props.selectedMerchant.key : '',
+  );
+  const [merchantName, setMerchantName] = React.useState<string>(
+    props.selectedMerchant ? props.selectedMerchant.key : '',
+  );
+  const [startDate, setStartDate] = React.useState<Date>(props.selectedStartDate);
+  const [endDate, setEndDate] = React.useState<Date>(props.selectedEndDate);
   const [selectedStatus, setSelectedStatus] = React.useState<{ value: TOrderStatus; label: string }>(
-    statusList.find(opt => opt.value === props.status),
+    statusList.find(opt => opt.value === props.selectedStatus),
   );
   /* OrderListFilterComponent Callbacks */
-  const handleFilterCustomerChange = React.useCallback((e: string) => {
-    setCustomerName(e);
-    if (props.onCustomerFilterType) {
-      props.onCustomerFilterType(e);
-    }
-  }, []);
-  const handleFilterMerchantChange = React.useCallback((e: string) => {
-    setMerchantName(e);
-    if (props.onMerchantFilterType) {
-      props.onMerchantFilterType(e);
-    }
+  const handleFilterCustomerChange = React.useCallback(
+    (e: string) => {
+      setCustomerName(e);
+      if (props.onCustomerFilterType) {
+        props.onCustomerFilterType(e);
+      }
+    },
+    [props],
+  );
+  const handleFilterMerchantChange = React.useCallback(
+    (e: string) => {
+      setMerchantName(e);
+      if (props.onMerchantFilterType) {
+        props.onMerchantFilterType(e);
+      }
+    },
+    [props],
+  );
+
+  const onDatesChanged = React.useCallback(dates => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
   }, []);
 
   const handleFilter = React.useCallback(() => {
-    if (customerId && props.setCustomerId) {
-      props.setCustomerId(customerId);
-    }
-    if (merchantId && props.setMerchantId) {
-      props.setMerchantId(customerId);
-    }
-    if (lastDate) {
-      props.setLastDate(lastDate);
-    }
-    if (selectedStatus) {
-      props.setStatus(selectedStatus.value);
-    }
-  }, []);
+    const filterObj = {
+      customerId,
+      merchantId,
+      startDate,
+      endDate,
+      status: selectedStatus?.value || undefined,
+    };
+    props.onSubmit(filterObj);
+  }, [customerId, endDate, merchantId, props, selectedStatus, startDate]);
   /* OrderListFilterComponent Lifecycle  */
 
   return (
-    <Row>
-      <Col lg={3} md={3} xl={3} sm={12} xs={12}>
-        <UISelect
-          value={selectedStatus}
-          onChange={(e: { value: TOrderStatus; label: string }) => setSelectedStatus(e)}
-          options={statusList}
-          placeholderKey="Secim Yapin"
-          labelKey="Siparis Durumu"
-        />
-      </Col>
-      {props.showCustomerFilter && (
-        <Col lg={3} md={3} xl={3} sm={12} xs={12}>
-          <SearchComponent
-            labelKey="Musteri Ismi"
-            inputName="customer-filter"
-            searchKey={customerName}
-            onTypeCallback={handleFilterCustomerChange}
-            onSelectCallback={(x: ResultItem) => {
+    <FiltersComponent
+      id="orders-filter"
+      fields={[
+        {
+          type: 'select',
+          input: {
+            value: selectedStatus,
+            onChange: (e: { value: TOrderStatus; label: string }) => setSelectedStatus(e),
+            options: statusList,
+            placeholderKey: 'Secim Yapin',
+            labelKey: 'Siparis Durumu',
+          },
+        },
+        {
+          type: 'search',
+          input: {
+            labelKey: 'Musteri Ismi',
+            inputName: 'customer-filter',
+            searchKey: customerName,
+            onTypeCallback: handleFilterCustomerChange,
+            onSelectCallback: (x: ResultItem) => {
               setCustomerId(x.id);
-            }}
-            resultList={props.filteredCustomerList}
-          />
-        </Col>
-      )}
-      {props.showMerchantFilter && (
-        <Col lg={3} md={3} xl={3} sm={12} xs={12}>
-          <SearchComponent
-            labelKey="Satici"
-            inputName="merchant-filter"
-            searchKey={merchantName}
-            onTypeCallback={handleFilterMerchantChange}
-            onSelectCallback={(x: ResultItem) => {
+            },
+            resultList: props.filteredCustomerList,
+          },
+        },
+        {
+          type: 'search',
+          input: {
+            labelKey: 'Satici',
+            inputName: 'merchant-filter',
+            searchKey: merchantName,
+            onTypeCallback: handleFilterMerchantChange,
+            onSelectCallback: (x: ResultItem) => {
               setMerchantId(x.id);
-            }}
-            resultList={props.filteredMerchantList}
-          />
-        </Col>
-      )}
-      <Col lg={3} md={3} xl={3} sm={12} xs={12} className="d-flex justify-content-center align-items-center">
-        <StyledNameLabel>Tarih: </StyledNameLabel>
-        <DatePicker
-          selected={lastDate}
-          maxDate={new Date()}
-          onChange={selectedDate => setLastDate(selectedDate)}
-          locale="tr"
-          dateFormat="yyyy-MM-dd"
-        />
-      </Col>
-      <Col lg={3} md={3} xl={3} sm={12} xs={12} className="d-flex justify-content-end align-items-center">
-        <Button disabled={!lastDate && !selectedStatus} onClick={handleFilter}>
-          Filtrele
-        </Button>
-      </Col>
-    </Row>
+            },
+            resultList: props.filteredMerchantList,
+          },
+        },
+        {
+          type: 'date',
+          input: {
+            labelKey: 'Tarih',
+            name: 'date-ranges',
+            placeholderText: 'Tarih',
+            selected: startDate,
+            maxDate: new Date(),
+            onChange: onDatesChanged,
+            startDate: startDate,
+            endDate: endDate,
+            selectsRange: true,
+            isClearable: true,
+            locale: 'tr',
+            dateFormat: 'dd-MM-yyyy',
+          },
+        },
+      ]}
+      onSubmit={handleFilter}
+    />
   );
 }
 const PureOrderListFilterComponent = React.memo(OrderListFilterComponent);

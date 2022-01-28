@@ -4,6 +4,7 @@ import { CgDanger } from 'react-icons/cg';
 import { ApiCallService, ApiCall } from '../../utils/api/ApiCall';
 import { FullScreenLoading } from '../loading/full-screen-loading';
 import styled from 'styled-components';
+import { Colors } from '../../utils/colors';
 
 const StyledPageContainer = styled.div`
   width: 100%;
@@ -40,7 +41,7 @@ function CheckHealth(props: React.PropsWithChildren<any>) {
   if (hasError) {
     return (
       <StyledPageContainer>
-        <CgDanger color="#9e9e9e" size={46} />
+        <CgDanger color={Colors.gray} size={46} />
         <StyledTitle>{t('not-connect-page.message')}</StyledTitle>
       </StyledPageContainer>
     );

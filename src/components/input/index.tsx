@@ -1,6 +1,6 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes } from 'react';
 
-export interface Props extends InputHTMLAttributes<HTMLInputElement> {
+export interface UIInputProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
   labelClassName?: string;
   inputClassName?: string;
@@ -10,28 +10,28 @@ export interface Props extends InputHTMLAttributes<HTMLInputElement> {
   errorKey?: string;
   type?: string;
   shadow?: boolean;
-  variant?: "normal" | "solid" | "outline";
+  variant?: 'normal' | 'solid' | 'outline';
 }
 
-const UIInput = React.forwardRef<HTMLInputElement, Props>(
+const UIInput = React.forwardRef<HTMLInputElement, UIInputProps>(
   (
     {
-      className = "block",
+      className = 'block',
       labelKey,
       labelClassName,
       name,
       errorKey,
       placeholderKey,
-      variant = "normal",
+      variant = 'normal',
       shadow = false,
-      type = "text",
+      type = 'text',
       inputClassName,
       ...rest
     },
     ref,
   ) => {
     return (
-      <div className={`form-group ${className || ""}`}>
+      <div className={`form-group ${className || ''}`}>
         {labelKey && (
           <label className={labelClassName} htmlFor={name}>
             {labelKey}
@@ -43,10 +43,10 @@ const UIInput = React.forwardRef<HTMLInputElement, Props>(
           type={type}
           ref={ref}
           placeholder={placeholderKey}
-          className={`form-control border ${inputClassName || ""}`}
+          className={`form-control border ${inputClassName || ''}`}
           autoComplete="off"
           spellCheck="false"
-          aria-invalid={errorKey ? "true" : "false"}
+          aria-invalid={errorKey ? 'true' : 'false'}
           {...rest}
         />
         {errorKey && (

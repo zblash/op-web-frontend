@@ -200,6 +200,9 @@ class MutationEndpoints {
   removeProductSpecify: (s: { id: string }) => Promise<ISpecifyProductResponse> = ({ id }) =>
     ApiCallService.request(new (ApiCall as any)().setUrl(`/products/specify/${id}`).delete());
 
+  removeProduct: (s: { id: string }) => Promise<IProductResponse> = ({ id }) =>
+    ApiCallService.request(new (ApiCall as any)().setUrl(`/products/${id}`).delete());
+
   updateOrder: (params: {
     id: string;
     paidPrice?: number;

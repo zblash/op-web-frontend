@@ -38,9 +38,13 @@ class PaginatedQueryEndpoints {
     sortBy?: string;
     sortType?: string;
     userId?: string;
-  }) => Promise<IPaginationWrapper<IProductResponse>> = ({ pageNumber, sortBy, sortType, userId }) =>
+    categoryId?: string;
+  }) => Promise<IPaginationWrapper<IProductResponse>> = ({ pageNumber, sortBy, sortType, userId, categoryId }) =>
     ApiCallService.request(
-      new (ApiCall as any)().setUrl(`/products`, true).setParams({ pageNumber, sortBy, sortType, userId }).get(),
+      new (ApiCall as any)()
+        .setUrl(`/products`, true)
+        .setParams({ pageNumber, sortBy, sortType, userId, categoryId })
+        .get(),
     );
 
   getAllProductsByCategoryId: (s: {
@@ -58,17 +62,23 @@ class PaginatedQueryEndpoints {
     );
 
   getAllOrders: (s: {
-    userId?: string;
-    userName?: string;
+    customerId?: string;
+    customerName?: string;
+    merchantId?: string;
+    merchantName?: string;
     startDate?: string;
+    endDate?: string;
     pageNumber: number;
     sortBy?: string;
     sortType?: string;
     status?: TOrderStatus;
   }) => Promise<IPaginationWrapper<IOrder>> = ({
-    userId,
-    userName,
+    customerId,
+    customerName,
+    merchantId,
+    merchantName,
     startDate,
+    endDate,
     pageNumber,
     sortBy,
     sortType,
@@ -77,7 +87,18 @@ class PaginatedQueryEndpoints {
     return ApiCallService.request(
       new (ApiCall as any)()
         .setUrl('/orders', true)
-        .setParams({ pageNumber, sortBy, sortType, userId, userName, startDate, status })
+        .setParams({
+          pageNumber,
+          sortBy,
+          sortType,
+          customerId,
+          customerName,
+          merchantId,
+          merchantName,
+          startDate,
+          endDate,
+          status,
+        })
         .get(),
     );
   };

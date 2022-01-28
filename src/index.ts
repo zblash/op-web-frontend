@@ -15,6 +15,8 @@ export {
   objectMap,
   useLocationQueryParams,
   scrollToRef,
+  dateToString,
+  stringToDate,
 } from './utils/helpers';
 export {
   useStateFromProp,
@@ -85,7 +87,10 @@ export {
   ActivityType,
   CreditPaymentType,
   DaysOfWeek,
+  ICommonCustomerResponse,
 } from './utils/api/api-models';
+
+export { Colors } from './utils/colors';
 
 export { mutationEndPoints } from './utils/api/mutation-endpoints';
 export { paginatedQueryEndpoints, GetCategoriesVariables } from './utils/api/paginated-query-endpoints';
@@ -112,43 +117,39 @@ export {
   userInfosQueryKeys,
 } from './utils/query-factories/definitions-query-factory';
 
-export {
-  FaUserCircle as UIUserIcon,
-  FaMapMarkedAlt as UIMapIcon,
-  FaFacebookF as UIFacebookIcon,
-  FaTwitter as UITwitterIcon,
-  FaInstagram as UIInstagramIcon,
-  FaLinkedinIn as UILinkedInIcon,
-  FaSignOutAlt as UISignOutIcon,
-  FaBullhorn as UINotificationHornIcon,
-  FaRegEdit as UIEditIcon,
-  FaTrash as UITrashIcon,
-  FaCamera as UICameraIcon,
-  FaChevronCircleUp as UIChevronUpIcon,
-  FaShoppingCart as UIShoppingCartIcon,
-} from 'react-icons/fa';
-
-export { BsInboxes as UIInboxes, BsDot as UIDotIcon } from 'react-icons/bs';
-
-export { RiNotification2Fill as UINotificationIcon, RiCloseFill as UICloseIcon } from 'react-icons/ri';
-
-export { BiChevronDownCircle as UIDownChevronIcon, BiNetworkChart as UINetworkIcon } from 'react-icons/bi';
-
-export { GoPackage as UIPackageIcon } from 'react-icons/go';
-
-export {
-  AiFillDownCircle as UIFillDownIcon,
-  AiOutlineLogout as UILogoutSecondIcon,
-  AiOutlineHome as UIHOmeIcon,
-  AiOutlineCreditCard as UICreditCardIcon,
-  AiOutlineSetting as UISettingsIcon,
-  AiOutlineDown as UIOutlineDownIcon,
-} from 'react-icons/ai';
-
-export { Eye as UIEyeIcon } from './components/custom-icons/eye-icon';
-
-export { EyeOff as UIEyeOffIcon } from './components/custom-icons/eye-off-icon';
 export { CheckHealth } from './components/check-health';
+
+export {
+  UIUserIcon,
+  UIMapIcon,
+  UIFacebookIcon,
+  UITwitterIcon,
+  UIInstagramIcon,
+  UILinkedInIcon,
+  UISignOutIcon,
+  UINotificationHornIcon,
+  UIEditIcon,
+  UITrashIcon,
+  UICameraIcon,
+  UIChevronUpIcon,
+  UIShoppingCartIcon,
+  UIFilterIcon,
+  UIInboxes,
+  UIDotIcon,
+  UINotificationIcon,
+  UICloseIcon,
+  UIDownChevronIcon,
+  UINetworkIcon,
+  UIPackageIcon,
+  UIFillDownIcon,
+  UILogoutSecondIcon,
+  UIHOmeIcon,
+  UICreditCardIcon,
+  UISettingsIcon,
+  UIOutlineDownIcon,
+  UIEyeIcon,
+  UIEyeOffIcon,
+} from './icons';
 
 export { UIContainer } from './components/container/index';
 export { AnnouncementComponent } from './components/announcements';
@@ -175,3 +176,9 @@ export { QuantityInput } from './components/quantity-input';
 export { SpecifyAddToCart } from './components/specify-add-to-cart';
 export { OrderListComponent } from './components/order-list';
 export { SearchComponent } from './components/search-component';
+export { DatePickerComponent } from './components/datepicker';
+export { FilterWrapperComponent } from './components/filter-wrapper';
+export { FiltersComponent } from './components/filters';
+
+export { OrdersListHookProps, useOrdersListHOC } from './hooks/order-list';
+export { OrdersFilterHooksProps, useOrdersFilterHOC } from './hooks/orders-filter';

@@ -1,5 +1,5 @@
-import * as React from "react";
-import { NavLink } from "react-router-dom";
+import * as React from 'react';
+import { NavLink } from 'react-router-dom';
 
 /*
   Link Helpers
@@ -13,17 +13,10 @@ interface LinkProps {
 }
 
 /*
-  Link Colors // TODO : move theme.json
-*/
-export const LinkColors = {
-  wrapperBackground: "#fff",
-};
-
-/*
   Link Styles
 */
 
-const _Link: React.SFC<LinkProps> = (props) => {
+const _Link: React.SFC<LinkProps> = props => {
   return (
     <NavLink
       className={props.className}

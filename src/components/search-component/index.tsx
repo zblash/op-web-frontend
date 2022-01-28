@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap';
 import debounce from 'lodash.debounce';
 import styled from 'styled-components';
 import { UIInput } from '../..';
+import { Colors } from '../../utils/colors';
 
 const StyledResultListWrapper = styled.div`
   width: 100%;
@@ -16,7 +17,7 @@ const StyledResultListWrapper = styled.div`
 const StyledResultItem = styled.button`
   background-color: white;
   border: 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid ${Colors.grayLite};
   padding: 5px 0 5px 12px;
   width: 100%;
 `;
@@ -26,7 +27,7 @@ export interface ResultItem {
   key: string;
 }
 
-interface SearchComponentProps {
+export interface SearchComponentProps {
   inputName: string;
   labelKey: string;
   searchKey?: string;
@@ -68,7 +69,7 @@ function SearchComponent(props: React.PropsWithChildren<SearchComponentProps>) {
 
   /* SearchComponent Lifecycle  */
   return (
-    <Col>
+    <>
       <UIInput
         placeholderKey={props.labelKey}
         labelKey={props.labelKey}
@@ -80,7 +81,7 @@ function SearchComponent(props: React.PropsWithChildren<SearchComponentProps>) {
           setShowResultList(true);
         }}
       />
-      {props.resultList && showResultList && (
+      {props.resultList && props.resultList.length > 0 && showResultList && (
         <StyledResultListWrapper>
           {props.resultList.map((result: ResultItem) => (
             <StyledResultItem key={result.id} onClick={() => onItemSelected(result)}>
@@ -89,7 +90,7 @@ function SearchComponent(props: React.PropsWithChildren<SearchComponentProps>) {
           ))}
         </StyledResultListWrapper>
       )}
-    </Col>
+    </>
   );
 }
 const PureSearchComponent = React.memo(SearchComponent);

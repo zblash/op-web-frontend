@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { Colors } from '../../utils/colors';
 
 interface CheckboxProps {
   id: string;
@@ -11,9 +12,6 @@ interface CheckboxProps {
   value?: boolean;
   className?: string;
 }
-// TODO: refactor css
-const primaryColor = '#0075ff';
-const deactiveColor = '#5a5358';
 
 const StyledLabel = styled.label<{ poition: 'left' | 'right' }>`
   margin-left: ${props => (props.poition === 'right' ? 8 : 0)}px;
@@ -36,7 +34,7 @@ const StyledCheckbox = styled.input<{ isAlwaysHighlighted?: boolean }>`
   cursor: pointer;
   width: 32px;
   height: 16px;
-  border: 2px solid ${props => (props.isAlwaysHighlighted ? primaryColor : deactiveColor)};
+  border: 2px solid ${props => (props.isAlwaysHighlighted ? Colors.primary : Colors.gray)};
   border-radius: 16px;
 
   ::before {
@@ -48,14 +46,14 @@ const StyledCheckbox = styled.input<{ isAlwaysHighlighted?: boolean }>`
     bottom: 2px;
     left: 2px;
     border-radius: 50%;
-    background: ${props => (props.isAlwaysHighlighted ? primaryColor : deactiveColor)};
+    background: ${props => (props.isAlwaysHighlighted ? Colors.primary : Colors.gray)};
   }
   :checked {
-    border-color: ${primaryColor};
+    border-color: ${Colors.primary};
     ::before {
       right: 2px;
       left: 18px;
-      background: ${primaryColor};
+      background: ${Colors.primary};
     }
   }
 `;

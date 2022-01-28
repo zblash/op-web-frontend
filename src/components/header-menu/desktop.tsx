@@ -3,6 +3,7 @@ import { UIOutlineDownIcon } from '../../index';
 import { UILink } from '../link';
 import { Container, Row, Col } from 'react-bootstrap';
 import Logo from '../images/logo/flogo.png';
+import { Colors } from '../../utils/colors';
 /* HeaderMenu Helpers */
 
 /* HeaderMenu Constants */
@@ -36,7 +37,7 @@ function HeaderMenu() {
               </li>
               <li>
                 <UILink to="">
-                  ÜRÜN iŞLEMLERİ <UIOutlineDownIcon color="#9e9e9e" />
+                  ÜRÜN iŞLEMLERİ <UIOutlineDownIcon color={Colors.gray} />
                 </UILink>
                 <div className="menu_option">
                   <ul>
@@ -51,7 +52,7 @@ function HeaderMenu() {
               </li>
               <li>
                 <UILink to="">
-                  CARİ İŞLEMLER <UIOutlineDownIcon color="#9e9e9e" />
+                  CARİ İŞLEMLER <UIOutlineDownIcon color={Colors.gray} />
                 </UILink>
                 <div className="menu_option">
                   <ul>
@@ -72,7 +73,7 @@ function HeaderMenu() {
               </li>
               <li>
                 <UILink to="">
-                  DESTEK İŞLEMLERİ <UIOutlineDownIcon color="#9e9e9e" />
+                  DESTEK İŞLEMLERİ <UIOutlineDownIcon color={Colors.gray} />
                 </UILink>
 
                 <div className="menu_option">

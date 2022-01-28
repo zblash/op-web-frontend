@@ -2,6 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import Portal from '../portal';
 import { DefaultLoading } from './default-loading';
+import { Colors } from '../../utils/colors';
 
 /*
   FullScreenLoading Helpers
@@ -11,18 +12,11 @@ interface FullScreenLoadingProps {
 }
 
 /*
-  FullScreenLoading Colors // TODO : move theme.json
-*/
-const FullScreenLoadingColors = {
-  wrapperBackground: '#fff',
-};
-
-/*
   FullScreenLoading Styles
 */
 
 const StyledFullScreenLoadingWrapper = styled.div`
-  background-color: ${FullScreenLoadingColors.wrapperBackground};
+  background-color: ${Colors.white};
   overflow: hidden;
   position: absolute;
   top: 0;

@@ -114,7 +114,18 @@ function scrollToRef(ref: React.RefObject<any>) {
   }
 }
 
+function dateToString(date: Date) {
+  return `${twoDigit(date.getDate())}-${twoDigit(date.getMonth() + 1)}-${date.getFullYear()}`;
+}
+
+function stringToDate(dateString: string) {
+  const newDateString = dateString.replace(/(\d+[/])(\d+[/])/, '$2$1');
+
+  return new Date(newDateString);
+}
+
 export {
+  // eslint-disable-next-line no-undef
   MaybeArray,
   twoDigit,
   makeid,
@@ -131,4 +142,6 @@ export {
   objectMap,
   useLocationQueryParams,
   scrollToRef,
+  dateToString,
+  stringToDate,
 };

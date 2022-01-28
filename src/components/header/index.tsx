@@ -19,6 +19,7 @@ import { HeaderMenu } from '../header-menu/desktop';
 import { MobileHeaderMenu } from '../header-menu/mobile';
 import { TabletHeaderMenu } from '../header-menu/tablet';
 import { IUserInfoResponse } from '../../utils/api/api-models';
+import { Colors } from '../../utils/colors';
 /*
   Header Helpers
 */
@@ -46,7 +47,7 @@ const _Header: React.SFC<HeaderProps> = props => {
               <>
                 <ul>
                   <li>
-                    <UIUserIcon color="#8CBC43" /> Sn: {props.userDetails.name}
+                    <UIUserIcon color={Colors.green} /> Sn: {props.userDetails.name}
                     <div className="user_box">
                       <ul>
                         <li>
@@ -59,10 +60,10 @@ const _Header: React.SFC<HeaderProps> = props => {
                     </div>
                   </li>
                   <li>
-                    <UIMapIcon color="#8CBC43" /> Şube: {props.userDetails.address.stateName}
+                    <UIMapIcon color={Colors.green} /> Şube: {props.userDetails.address.stateName}
                   </li>
                   <li>
-                    <UINotificationIcon color="#8CBC43" /> Bildirimler
+                    <UINotificationIcon color={Colors.green} /> Bildirimler
                     <div className="user_box notification_box scrollbar" id="style-15">
                       <ul>
                         <li>
